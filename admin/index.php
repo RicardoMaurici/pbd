@@ -1,11 +1,17 @@
 <?php
+// Verifica o login e redireciona a pagina conforme o tipo de login
+if(isset($_POST['login'])){
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$extra = 'main.php';
+	header("Location: http://$host$uri/$extra");
+	exit;
+}
 require 'includes/header.html';
-if($_SERVER['REQUEST_METHOD'])
-	echo $_POST["login"];
 ?>
 
 <div class="container">
-
+	<!-- Login para area de admin, funcionarios ou professores -->
 	<div class="row">
 		<div class="col-md-3 col-md-offset-4">
 			<form role="form" class="form-signin" action="index.php" method="post">
@@ -17,7 +23,6 @@ if($_SERVER['REQUEST_METHOD'])
       		</form>
 		</div>      
 	</div>
-
 
 </div>
 
