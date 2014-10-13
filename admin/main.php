@@ -1,6 +1,6 @@
 <?php
 require 'includes/header.html';
-require 'includes/menu.php';
+require 'includes/menuAdmin.php';
 //Pagina principal após o login
 ?>
 
