@@ -1,6 +1,6 @@
 <?php
-require 'includes/header.html';
-require 'includes/menuAdmin.php';
+require '../includes/header.html';
+require '../includes/menuAdmin.php';
 //Pagina principal após o login
 ?>
 
@@ -19,6 +19,6 @@ Phasellus orci erat, vestibulum non consequat eget, rhoncus id enim. Morbi enim 
   
  
 <?php   
-require 'includes/rodape.html';
-require 'includes/footer.html';
+require '../includes/rodape.html';
+require '../includes/footer.html';
 ?>

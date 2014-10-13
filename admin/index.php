@@ -3,7 +3,7 @@
 if(isset($_POST['login'])){
 	$host  = $_SERVER['HTTP_HOST'];
 	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-	$extra = 'main.php';
+	$extra = 'paginas/main.php';
 	header("Location: http://$host$uri/$extra");
 	exit;
 }
