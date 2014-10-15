@@ -5,7 +5,7 @@
 <nav id="navbar-example" class="navbar navbar-default navbar-static col-md-10 col-md-offset-1" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-          	<a class="navbar-brand" href=<?php echo "$uri/main.php";?> >HOME</a>
+          	<a class="navbar-brand" href=<?php echo "$uri/mainProfessor.php";?> >HOME</a>
         </div>
         <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
           <ul class="nav navbar-nav">

@@ -6,7 +6,7 @@ require '../includes/menuAdmin.php';
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
-    <h3 class="panel-title">Página principal</h3>
+    <h3 class="panel-title">Pedido de Material</h3>
   </div>
   <div class="panel-body">
      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis tincidunt commodo. Aenean finibus aliquam lectus, vitae pretium tellus vehicula sed. Suspendisse tempus blandit felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam auctor nisl ac erat elementum, molestie varius lectus finibus. Suspendisse finibus velit sed quam lacinia, eget lacinia diam varius. Donec interdum ipsum felis, non ultrices enim interdum vel. Duis varius blandit dui luctus cursus. Nullam vel auctor dui. Nam nulla sapien, ornare sit amet tristique a, mollis id purus. Vestibulum est massa, luctus at molestie eget, auctor sit amet nunc. Ut tellus velit, scelerisque ac sagittis eget, auctor in dui. Maecenas nec tortor convallis, bibendum tortor sit amet, finibus purus. Maecenas a lectus non nibh ultrices pellentesque vestibulum at ligula. Pellentesque iaculis, elit vel vestibulum imperdiet, leo sapien venenatis dui, gravida congue elit arcu in nibh. In non augue non arcu dictum lobortis dignissim nec sapien.

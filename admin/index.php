@@ -3,7 +3,14 @@
 if(isset($_POST['login'])){
 	$host  = $_SERVER['HTTP_HOST'];
 	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-	$extra = 'paginas/main.php';
+
+	if($_POST['login'] == admin)
+		$extra = 'paginas/mainAdmin.php';
+	elseif($_POST['login'] == funcionario)
+		$extra = 'paginas/mainFuncionario.php';
+	elseif($_POST['login'] == professor)
+		$extra = 'paginas/mainProfessor.php';
+	
 	header("Location: http://$host$uri/$extra");
 	exit;
 }
@@ -17,7 +24,7 @@ require 'includes/header.html';
 			<form role="form" class="form-signin" action="index.php" method="post">
         		<h2 class="form-signin-heading">&nbsp&nbsp&nbsp&nbsp Autenticação</h2>
         		<input type="text" autofocus="" name="login" required="" placeholder="Login" class="form-control">
-        		<input type="password" name="senha" required="" placeholder="Senha" class="form-control">
+        		<input type="password" name="senha"  placeholder="Senha" class="form-control">
         		</br>
         		<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
       		</form>
