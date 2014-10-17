@@ -18,9 +18,18 @@
             </li>
 
             <li class="dropdown">
-              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Professor<span class="caret"></span></a>
+              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Gerência Inscrições<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroProfessor.php">Cadastrar Professor</a></li>                
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="consultaGeral.php">Consulta Geral</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="selecionarAlunos.php">Selecionar Alunos</a></li>                 
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Colaboradores<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroProfessor.php">Cadastrar Professor</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroFuncionario.php">Cadastrar Funcionário</a></li>                 
               </ul>
             </li>
 
