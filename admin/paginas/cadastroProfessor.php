@@ -8,6 +8,7 @@ require '../includes/menuAdmin.php';
   <div class="panel-heading">
     <h3 class="panel-title">Cadastro de Professor</h3>
   </div>
+  <div class="panel-body">
   	<form class="form-horizontal" role="form">
   		<div class="form-group">
     		<label for="lbnomeCompleto" class="col-sm-2 control-label">Nome Completo</label>
@@ -178,7 +179,7 @@ require '../includes/menuAdmin.php';
   </tr>
 </table>
 </div>
-
+</div>
 </div>
   
  
