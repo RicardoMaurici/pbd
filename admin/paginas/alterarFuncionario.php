@@ -6,15 +6,20 @@ require '../includes/menuAdmin.php';
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
-    <h3 class="panel-title">Cadastro de Professor</h3>
+    <h3 class="panel-title">Alteração de Funcionário</h3>
   </div>
   <div class="panel-body">
   	<form class="form-horizontal" role="form">
   		<div class="form-group">
     		<label for="lbnomeCompleto" class="col-sm-2 control-label">Nome Completo</label>
-    		<div class="col-sm-4">
+    		<div class="col-sm-3">
       			<input type="text" class="form-control" id="inomeCompleto" placeholder="Informe o nome completo">
     		</div>
+        <div class="col-sm-2">
+          <label>
+            Admin <input type="checkbox" id="acessoAdmin">
+          </label>
+        </div>
     	</div>
     	<div class="form-group">
     		<label for="lbcpf" class="col-sm-2 control-label">CPF</label>
@@ -78,15 +83,12 @@ require '../includes/menuAdmin.php';
           </div>
       </div>
       <div class="form-group">
-        <label for="lbescolaridade" class="col-sm-2 control-label">Áreas de Interesse</label>
+        <label for="lbescolaridade" class="col-sm-2 control-label">Cargo</label>
           <div class="col-sm-4">
-            <select multiple class="form-control"> <!--infomacao vem do banco-->
-              <option>Biologia</option> 
-              <option>Geografia</option>
-              <option>História</option>
-              <option>Inglês</option>
-              <option>Matemática</option>
-              <option>Português</option>
+            <select class="form-control"> <!--infomacao vem do banco-->
+              <option>Secretária</option> 
+              <option>Monitor</option>
+              <option>Diretor</option>
             </select>
           </div>
       </div>
@@ -167,33 +169,11 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-      <button type="button" class="btn btn-primary" style="width: 25%;" id="cadastrar">Cadastrar</button>
+      <button type="button" class="btn btn-warning" style="width: 25%;" id="cadastrar">Alterar</button>
       <!--<button type="button" class="btn btn-warning" id="alterar">Alterar</button>
       <button type="button" class="btn btn-danger" id="cancelar">Excluir</button>-->
     </div>
-	</form>
-
-<div class="form-group">
-<table class="table table-striped">
-  <tr>
-    <td><b></b></td>
-    <td><b>Nome</b></td>
-    <td><b>CPF</b></td>
-    <td><b>Email</b></td>
-    <td><b>Dt Nascimento</b></td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" value="1" /></td>
-    <td>José</td>
-    <td>999.999.999-99</td>
-    <td>jose@email.com</td>
-    <td>01/01/1981</td>
-  </tr>
-</table>
-</div>
-</div>
-</div>
-  
+	</form>  
  
 <?php   
 require '../includes/rodape.html';

@@ -6,7 +6,7 @@ require '../includes/menuAdmin.php';
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
-    <h3 class="panel-title">Cadastro de Professor</h3>
+    <h3 class="panel-title">Alteração de Professor</h3>
   </div>
   <div class="panel-body">
   	<form class="form-horizontal" role="form">
@@ -167,34 +167,12 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-      <button type="button" class="btn btn-primary" style="width: 25%;" id="cadastrar">Cadastrar</button>
+      <button type="button" class="btn btn-warning" style="width: 25%;" id="cadastrar">Alterar</button>
       <!--<button type="button" class="btn btn-warning" id="alterar">Alterar</button>
       <button type="button" class="btn btn-danger" id="cancelar">Excluir</button>-->
     </div>
 	</form>
 
-<div class="form-group">
-<table class="table table-striped">
-  <tr>
-    <td><b></b></td>
-    <td><b>Nome</b></td>
-    <td><b>CPF</b></td>
-    <td><b>Email</b></td>
-    <td><b>Dt Nascimento</b></td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" value="1" /></td>
-    <td>José</td>
-    <td>999.999.999-99</td>
-    <td>jose@email.com</td>
-    <td>01/01/1981</td>
-  </tr>
-</table>
-</div>
-</div>
-</div>
-  
- 
 <?php   
 require '../includes/rodape.html';
 require '../includes/footer.html';
