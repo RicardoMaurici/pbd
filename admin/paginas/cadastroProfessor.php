@@ -78,7 +78,20 @@ require '../includes/menuAdmin.php';
           </div>
       </div>
       <div class="form-group">
-        <label for="lbescolaridade" class="col-sm-2 control-label">Áreas de Interesse</label>
+        <label for="lbinteresse" class="col-sm-2 control-label">Áreas de Interesse</label>
+          <div class="col-sm-4">
+            <select multiple class="form-control"> <!--infomacao vem do banco-->
+              <option>Biologia</option> 
+              <option>Geografia</option>
+              <option>História</option>
+              <option>Inglês</option>
+              <option>Matemática</option>
+              <option>Português</option>
+            </select>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="lbdisciplinas" class="col-sm-2 control-label">Disciplina</label>
           <div class="col-sm-4">
             <select multiple class="form-control"> <!--infomacao vem do banco-->
               <option>Biologia</option> 
