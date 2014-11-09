@@ -68,6 +68,8 @@ require '../includes/menuAdmin.php';
       <button type="button" class="btn btn-danger" id="cancelar">Excluir</button>-->
     </div>
 	</form>  
+  </div>
+</div>
  
 <?php   
 require '../includes/rodape.html';

@@ -8,7 +8,7 @@ require '../includes/menuAdmin.php';
   <div class="panel-heading">
     <h3 class="panel-title">Alteração de Professor</h3>
   </div>
-  <div class="panel-body">
+  <div class="panel-body" >
   	<form class="form-horizontal" role="form">
   		<div class="form-group">
     		<label for="lbnomeCompleto" class="col-sm-2 control-label">Nome Completo</label>
@@ -185,6 +185,8 @@ require '../includes/menuAdmin.php';
       <button type="button" class="btn btn-danger" id="cancelar">Excluir</button>-->
     </div>
 	</form>
+  </div>
+</div>
 
 <?php   
 require '../includes/rodape.html';
