@@ -113,7 +113,7 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-      <button type="button" class="btn btn-warning" style="width: 25%;" id="alterar">alterar</button>
+      <button type="button" class="btn btn-warning" style="width: 25%;" id="alterar">Alterar</button>
       <!--<button type="button" class="btn btn-warning" id="alterar">Alterar</button>
       <button type="button" class="btn btn-danger" id="cancelar">Excluir</button>-->
     </div>

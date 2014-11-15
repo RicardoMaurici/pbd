@@ -4,12 +4,12 @@ require '../includes/menuAdmin.php';
 //Pagina principal após o login
 ?>
 
-<div class="panel panel-default col-md-10 col-md-offset-1">
+<div class="panel panel-default col-md-10 col-md-offset-1" >
   <div class="panel-heading">
-    <h3 class="panel-title">Cadastro de Disciplina</h3>
+    <h3 class="panel-title">Alteração de Disciplina</h3>
   </div>
-  <div class="panel-body" style="margin-left:300px;">
-  	<form class="form-horizontal" role="form">
+  <div class="panel-body"style="margin-left:300px;" >
+  	<form class="form-horizontal" role="form" >
   		<div class="form-group">
     		<label for="lbDisciplina" class="col-sm-2 control-label">Disciplina</label>
     		<div class="col-sm-4">
@@ -33,7 +33,7 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-        <a href="gerenciaDisciplina.php" class="btn btn-primary" style="width:30%;">Cadastrar</a>
+        <a href="gerenciaDisciplina.php" class="btn btn-warning" style="width:30%;">Alterar</a>
     </div>
 	</form>
 </div>

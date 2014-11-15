@@ -6,7 +6,7 @@ require '../includes/menuAdmin.php';
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
-    <h3 class="panel-title">Registro de Recebimento de Material do Aluno</h3>
+    <h3 class="panel-title">Registro de Recebimento de Documento do Aluno</h3>
   </div>
   <div class="panel-body">
 	<form class="form-inline" role="form">
