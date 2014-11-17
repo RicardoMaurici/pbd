@@ -9,8 +9,7 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Registro de Doação/Contrato</h3>
   </div>
   <div class="panel-body">
-       <div class="container">
-  		<a href="cadastroDoacao.php" class="btn btn-primary">Cadastrar</a>
+       <a href="cadastroDoacao.php" class="btn btn-primary">Cadastrar</a>
   		<div class="row">    
    			<div class="col-md-12">
 		        <div class="table-responsive">  
@@ -54,9 +53,7 @@ require '../includes/menuAdmin.php';
        			</div>
       		</div>
   		</div>
-  </div>
-
-  </div>
+  	</div>
 </div>
   
  

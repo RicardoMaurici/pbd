@@ -9,8 +9,7 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Registro de Parceiro</h3>
   </div>
   <div class="panel-body">
-     <div class="container">
-  		<a href="cadastroParceiro.php" class="btn btn-primary">Cadastrar</a>
+     <a href="cadastroParceiro.php" class="btn btn-primary">Cadastrar</a>
   		<div class="row">    
    			<div class="col-md-12">
 		        <div class="table-responsive">  
@@ -51,8 +50,6 @@ require '../includes/menuAdmin.php';
        			</div>
       		</div>
   		</div>
-  </div>
-
   </div>
 </div>
   

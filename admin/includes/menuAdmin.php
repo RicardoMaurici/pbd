@@ -11,9 +11,9 @@
             <li class="dropdown">
               <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Curso<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroCurso.php">Cadastrar Curso</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="gerenciaCurso.php">Gerenciar Curso</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="gerenciaDisciplina.php">Gerenciar Disciplinas</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroTurma.php">Cadastrar Turma</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="gerenciaTurma.php">Gerenciar Turma</a></li>
               </ul>
             </li>
 
@@ -55,6 +55,9 @@
               </ul>
             </li>
 
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index.php">Sair</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container-fluid -->

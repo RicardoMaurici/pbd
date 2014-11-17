@@ -9,8 +9,7 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Avaliação do Curso</h3>
   </div>
   <div class="panel-body">
-     <div class="container">
-  		<a href="cadastroAvaliacaoCurso.php" class="btn btn-primary">Cadastrar</a>
+     <a href="cadastroAvaliacaoCurso.php" class="btn btn-primary">Cadastrar</a>
   		<div class="row">    
    			<div class="col-md-12">
 		        <div class="table-responsive">  
@@ -66,7 +65,6 @@ require '../includes/menuAdmin.php';
       		</div>
   		</div>
   	</div>
-   </div>
 </div>
   
  

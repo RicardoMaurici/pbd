@@ -9,7 +9,6 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Gerenciar Professores</h3>
   </div>
   <div class="panel-body">
-<div class="container">
   <a href="cadastroProfessor.php" class="btn btn-primary">Cadastrar</a>
   <!--<button class="btn btn-primary" data-title="Cadastrar" data-toggle="modal" data-target="#cadastrar" data-placement="top" rel="tooltip">Cadastrar</button>-->
   <div class="row">    
@@ -52,7 +51,6 @@ require '../includes/menuAdmin.php';
         </div>
       </div>
   </div>
-</div>
 </div>
 </div>
    

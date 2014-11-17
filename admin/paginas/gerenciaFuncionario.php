@@ -9,9 +9,8 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Gerenciar Funcionários</h3>
   </div>
   <div class="panel-body">
-	<div class="container">
-  		<a href="cadastroFuncionario.php" class="btn btn-primary">Cadastrar</a>
-  		<div class="row">    
+	<a href="cadastroFuncionario.php" class="btn btn-primary">Cadastrar</a>
+  	<div class="row">    
    			<div class="col-md-12">
 		        <div class="table-responsive">  
 		          <table id="mytable" class="table table-bordred table-striped">    
@@ -52,7 +51,6 @@ require '../includes/menuAdmin.php';
       		</div>
   		</div>
 	</div>
-</div>
 </div>
   
  

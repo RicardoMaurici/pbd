@@ -6,7 +6,7 @@ require '../includes/menuAdmin.php';
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
-    <h3 class="panel-title">Cadastro de Turma</h3>
+    <h3 class="panel-title">Alteração de Turma</h3>
   </div>
   <div class="panel-body">
   	<form class="form-horizontal" role="form">
@@ -227,7 +227,7 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-        <a href="gerenciaTurma.php" class="btn btn-primary" style="width: 25%;" id="cadastrar">Cadastrar</a>
+        <a href="gerenciaTurma.php" class="btn btn-warning" style="width: 25%;" id="cadastrar">Alterar</a>
     </div>
 	</form> 
   </div>

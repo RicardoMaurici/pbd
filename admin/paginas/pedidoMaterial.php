@@ -9,8 +9,7 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Pedido de Material</h3>
   </div>
   <div class="panel-body">
-        <div class="container">
-  		<a href="fazerPedido.php" class="btn btn-primary">Fazer Pedido</a>
+        <a href="fazerPedido.php" class="btn btn-primary">Fazer Pedido</a>
   		<div class="row">    
    			<div class="col-md-12">
 		        <div class="table-responsive">  
@@ -51,7 +50,6 @@ require '../includes/menuAdmin.php';
        			</div>
       		</div>
   		</div>
-  </div>
   </div>
 </div>
   
