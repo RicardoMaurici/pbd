@@ -1,4 +1,8 @@
 <?php
+include('conexao.class.php');
+$minhaConexao = new Conexao();
+$minhaConexao->open();
+$minhaConexao->statusCon();
 // Verifica o login e redireciona a pagina conforme o tipo de login
 /*if(isset($_POST['login'])){
 	$host  = $_SERVER['HTTP_HOST'];

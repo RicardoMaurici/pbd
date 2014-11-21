@@ -1,14 +1,25 @@
 <?php
+include('../conexao.class.php');
+$minhaConexao = new Conexao();
+$minhaConexao->open();
+$minhaConexao->statusCon();
 require '../includes/header.html';
 //Pagina principal após o login
 ?>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#ufs').change(function(){
+        $('#cidade').load('busca_cidades.php?uf='+$('#ufs').val() ); 
+    });
+  });
+</script>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
     <h3 class="panel-title">Cadastro de Candidato</h3>
   </div>
   <div class="panel-body">
-  	<form class="form-horizontal" role="form">
+  	<form class="form-horizontal" role="form" method="post">
   		<div class="form-group">
     		<label for="lbnomeCompleto" class="col-sm-2 control-label">Nome Completo</label>
     		<div class="col-sm-4">
@@ -75,18 +86,27 @@ require '../includes/header.html';
       <div class="form-group">
         <label for="lbpais" class="col-sm-2 control-label">País</label>
           <div class="col-sm-2">
-            <select class="form-control"  id="slpais"> <!--infomacao vem do banco-->
-              <option>Brasil</option> 
-              <option>Irlanda</option>
-              <option>México</option>
+            <select class="form-control"  name="pais" id="slpais"> <!--infomacao vem do banco-->
+            <?php
+              $sql="SELECT*FROM pais";
+              $result=pg_query($sql);
+              while($row=pg_fetch_array($result)){
+            ?>
+              <option value=<?php echo $row[0];?>><?php echo $row[1]; ?></option>
+              <?php } ?>
             </select>
           </div>
           <div class="col-sm-4">
             <label for="lbuf" class="col-sm-2 control-label">UF</label>
             <div class="col-sm-4">
-              <select class="form-control"  id="sluf"><!--infomacao vem do banco-->
-                <option>RS</option>
-                <option>SC</option>
+              <select class="form-control"  id="ufs" name="ufs"><!--infomacao vem do banco-->
+            <?php
+              $sql="SELECT*FROM uf";
+              $result=pg_query($sql);
+              while($row=pg_fetch_array($result)){
+            ?>
+                <option value=<?php echo $row[0];?>><?php echo $row[1]; ?></option>
+                <?php } ?>
               </select>
             </div>
         </div>
@@ -94,10 +114,8 @@ require '../includes/header.html';
       <div class="form-group">
         <label for="lbcidade" class="col-sm-2 control-label">Cidade</label>
           <div class="col-sm-4">
-            <select class="form-control"  id="slcidade"> <!--infomacao vem do banco-->
-              <option>Florianópolis</option> 
-              <option>Joinville</option>
-              <option>São Bento do Sul</option>
+            <select class="form-control"  > <!--infomacao vem do banco-->
+              <option value="0" id="cidade" name="cidade">Selecione o estado</option>
             </select>
           </div>
       </div>
