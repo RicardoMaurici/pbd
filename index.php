@@ -1,23 +1,33 @@
 <?php
-include('conexao.class.php');
-$minhaConexao = new Conexao();
-$minhaConexao->open();
-$minhaConexao->statusCon();
-// Verifica o login e redireciona a pagina conforme o tipo de login
-/*if(isset($_POST['login'])){
-	$host  = $_SERVER['HTTP_HOST'];
-	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-
-	if($_POST['login'] == admin)
-		$extra = 'paginas/mainAdmin.php';
-	elseif($_POST['login'] == funcionario)
-		$extra = 'paginas/mainFuncionario.php';
-	elseif($_POST['login'] == professor)
-		$extra = 'paginas/mainProfessor.php';
+include('conecta.php');
+//Verifica o login e redireciona a pagina conforme o tipo de login
+if(isset($_POST['login'])){
+	$login = addslashes(trim($_POST['login']));
+	$senha = addslashes(trim($_POST['senha']));
+	if(empty($login)){
+		echo '<script>alert("Login incorreto!")</script>';
+		echo '<script>history.back()</script>';
+	}elseif(empty($senha)){
+		echo '<script>alert("Senha incorreta!")</script>';
+		echo '<script>history.back()</script>';
+	}
+	else{
+		$login=(!get_magic_quotes_gpc()) ? addslashes($login):$login;
+		$senha=(!get_magic_quotes_gpc()) ? addslashes($senha):$senha;
+	}
+	$sql = "SELECT 8 FROM candidato WHERE CPF = '$login' AND senha = '$senha'";
+	$result=mysql_query($sql) or die (mysql_error());
+	if(mysql_num_rows($result)==0){
+		echo '<script>alert ("Login e/ou senha incorretos!")</script>';
+		echo '<script>history.back()</script>';
+	}else{
+		session_start();
+		$_SESSION['login']=$login;
+		$_SESSION['senha']=$senha;
+		header("Location:paginas/mainAluno.php");
+	}
 	
-	header("Location: http://$host$uri/$extra");
-	exit;
-}*/
+}
 require 'includes/headerInicio.html';
 ?>
 
@@ -27,11 +37,11 @@ require 'includes/headerInicio.html';
 		<div class="col-md-3 col-md-offset-4">
 			<form role="form" class="form-signin" action="index.php" method="post">
         		<h2 class="form-signin-heading" style="text-align: center;">Autenticação Aluno</h2>
-        		<input type="text" autofocus="" name="login" required="" placeholder="Login" class="form-control">
+        		<input type="text" autofocus="" name="login" required="" placeholder="Login (CPF)" class="form-control">
         		<input type="password" name="senha"  placeholder="Senha" class="form-control">
         		</br>
-        		<a href="paginas/mainAluno.php" class="btn btn-lg btn-primary btn-block" name="acesso">Entrar</a>
-        		<!--<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>-->
+        		<!--<a href="paginas/mainAluno.php" class="btn btn-lg btn-primary btn-block" name="acesso">Entrar</a>-->
+        		<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
         		<hr />
         		<div class="form-group">
         			<label for="lbcurso" class="col-sm-6 control-label">É novo aqui?</label>

@@ -1,8 +1,5 @@
 <?php
-include('../conexao.class.php');
-$minhaConexao = new Conexao();
-$minhaConexao->open();
-$minhaConexao->statusCon();
+include('../conecta.php');
 require '../includes/header.html';
 //Pagina principal após o login
 ?>
@@ -10,6 +7,29 @@ require '../includes/header.html';
   $(document).ready(function(){
     $('#ufs').change(function(){
         $('#cidade').load('busca_cidades.php?uf='+$('#ufs').val() ); 
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#cidade').change(function(){
+        $('#bairro').load('busca_bairros.php?cidade='+$('#cidade').val() ); 
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#bairro').change(function(){
+        $('#logradouro').load('busca_logradouros.php?bairro='+$('#bairro').val() ); 
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#logradouro').change(function(){
+        $('#endereco').load('busca_enderecos.php?logradouro='+$('#logradouro').val() ); 
     });
   });
 </script>
@@ -69,10 +89,13 @@ require '../includes/header.html';
         <label for="lbescolaridade" class="col-sm-2 control-label">Escolaridade</label>
           <div class="col-sm-4">
             <select class="form-control"  id="slescolaridade"> <!--infomacao vem do banco-->
-              <option>Médio Completo</option> 
-              <option>3º em Andamento</option>
-              <option>Superior Incompleto</option>
-              <option>Superior Completo</option>
+              <?php
+              $sql="SELECT*FROM escolaridade";
+              $result=mysql_query($sql);
+              while($row=mysql_fetch_array($result)){
+              ?>
+              <option value=<?php echo $row['idEscolaridade'];?>><?php echo $row['nivelEscolar']; ?></option>
+              <?php } ?>
             </select>
           </div>
       </div>
@@ -89,8 +112,8 @@ require '../includes/header.html';
             <select class="form-control"  name="pais" id="slpais"> <!--infomacao vem do banco-->
             <?php
               $sql="SELECT*FROM pais";
-              $result=pg_query($sql);
-              while($row=pg_fetch_array($result)){
+              $result=mysql_query($sql);
+              while($row=mysql_fetch_array($result)){
             ?>
               <option value=<?php echo $row[0];?>><?php echo $row[1]; ?></option>
               <?php } ?>
@@ -102,8 +125,8 @@ require '../includes/header.html';
               <select class="form-control"  id="ufs" name="ufs"><!--infomacao vem do banco-->
             <?php
               $sql="SELECT*FROM uf";
-              $result=pg_query($sql);
-              while($row=pg_fetch_array($result)){
+              $result=mysql_query($sql);
+              while($row=mysql_fetch_array($result)){
             ?>
                 <option value=<?php echo $row[0];?>><?php echo $row[1]; ?></option>
                 <?php } ?>
@@ -114,37 +137,33 @@ require '../includes/header.html';
       <div class="form-group">
         <label for="lbcidade" class="col-sm-2 control-label">Cidade</label>
           <div class="col-sm-4">
-            <select class="form-control"  > <!--infomacao vem do banco-->
-              <option value="0" id="cidade" name="cidade">Selecione o estado</option>
+            <select class="form-control" id="cidade" name="cidade" > <!--infomacao vem do banco-->
+              <option value="0" >Selecione a cidade</option>
             </select>
           </div>
       </div>
       <div class="form-group">
         <label for="lbbairro" class="col-sm-2 control-label">Bairro</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="ibairro"  placeholder="Bairro">
-        </div>
-        <div class="col-sm-4  ">
-            <label for="lbcep" class="col-sm-2 control-label">CEP</label>
-            <div class="col-sm-4">
-              <input type="text" class="form-control" id="icep"  placeholder="CEP">
-            </div>
+        <div class="col-sm-3">
+            <select class="form-control" id="bairro" name="bairro" > <!--infomacao vem do banco-->
+              <option value="0" >Selecione o bairro</option>
+            </select>
         </div>
       </div>
       <div class="form-group">
         <label for="lblogradouro" class="col-sm-2 control-label">Logradouro</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" id="ilogradouro"  placeholder="Informe o logradouro">
+            <select class="form-control" id="logradouro" name="logradouro" > <!--infomacao vem do banco-->
+              <option value="0" >Selecione o logradouro</option>
+            </select>
         </div>
       </div>
       <div class="form-group">
-        <label for="lbnresidencia" class="col-sm-2 control-label">Nº Residência</label>
-        <div class="col-sm-1">
-            <input type="text" class="form-control" id="inresidencia"  placeholder="Nº">
-        </div>
-        <label for="lbcomplemento" class="col-sm-1 control-label">Complemento</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="icomplemento"  placeholder="Complemento">
+        <label for="lbnresidencia" class="col-sm-2 control-label">Endereço </label>
+        <div class="col-sm-4">
+            <select class="form-control" id="endereco" name="endereco" > <!--infomacao vem do banco-->
+              <option value="0" >Selecione o endereço</option>
+            </select>
         </div>
       </div>
       <hr />

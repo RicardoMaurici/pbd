@@ -1,10 +1,10 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "1234";
+$pass = "root";
 
 $db   = "pbd";
-
+error_reporting(0);
 mysql_connect($host, $user, $pass) or die(mysql_error());
 mysql_select_db($db) or die('Erro ao conectar ao banco de dados');
 mysql_query("SET NAMES 'utf8'");
