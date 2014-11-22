@@ -1,6 +1,6 @@
 <?php
 include('conecta.php');
-//Verifica o login e redireciona a pagina conforme o tipo de login
+//Verifica o login e redireciona a pagina 
 if(isset($_POST['login'])){
 	$login = addslashes(trim($_POST['login']));
 	$senha = addslashes(trim($_POST['senha']));
@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
 		$login=(!get_magic_quotes_gpc()) ? addslashes($login):$login;
 		$senha=(!get_magic_quotes_gpc()) ? addslashes($senha):$senha;
 	}
-	$sql = "SELECT 8 FROM candidato WHERE CPF = '$login' AND senha = '$senha'";
+	$sql = "SELECT * FROM candidato WHERE CPF = '$login' AND senha = '$senha'";
 	$result=mysql_query($sql) or die (mysql_error());
 	if(mysql_num_rows($result)==0){
 		echo '<script>alert ("Login e/ou senha incorretos!")</script>';

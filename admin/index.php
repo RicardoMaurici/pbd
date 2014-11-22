@@ -1,18 +1,51 @@
 <?php
-// Verifica o login e redireciona a pagina conforme o tipo de login
+include('../conecta.php');
+//Verifica o login e redireciona a pagina 
 if(isset($_POST['login'])){
-	$host  = $_SERVER['HTTP_HOST'];
-	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$login = addslashes(trim($_POST['login']));
+	$senha = addslashes(trim($_POST['senha']));
+	if(empty($login)){
+		echo '<script>alert("Login incorreto!")</script>';
+		echo '<script>history.back()</script>';
+	}elseif(empty($senha)){
+		echo '<script>alert("Senha incorreta!")</script>';
+		echo '<script>history.back()</script>';
+	}
+	else{
+		$login=(!get_magic_quotes_gpc()) ? addslashes($login):$login;
+		$senha=(!get_magic_quotes_gpc()) ? addslashes($senha):$senha;
+	}
 
-	if($_POST['login'] == admin)
-		$extra = 'paginas/mainAdmin.php';
-	elseif($_POST['login'] == funcionario)
-		$extra = 'paginas/mainFuncionario.php';
-	elseif($_POST['login'] == professor)
-		$extra = 'paginas/mainProfessor.php';
+	$sql = "SELECT * FROM funcionario WHERE nomeUsuario = '$login' AND senha = '$senha'";
+	$result=mysql_query($sql) or die (mysql_error());
+	if(mysql_num_rows($result)==0){
+		$sql = "SELECT * FROM professor WHERE nomeUsuario = '$login' AND senha = '$senha'";
+		$result=mysql_query($sql) or die (mysql_error());
+		if(mysql_num_rows($result)==0){
+			echo '<script>alert ("Login e/ou senha incorretos!")</script>';
+			echo '<script>history.back()</script>';
+		}else{
+			session_start();
+			$_SESSION['login']=$login;
+			$_SESSION['senha']=$senha;
+			header("Location:paginas/mainProfessor.php");	
+		}
+	}else{
+		$temp=mysql_fetch_array($result);
+		$adm=$temp['privilegio'];
+		if($adm==0){
+			session_start();
+			$_SESSION['login']=$login;
+			$_SESSION['senha']=$senha;
+			header("Location:paginas/mainAdmin.php");
+		}else{
+			session_start();
+			$_SESSION['login']=$login;
+			$_SESSION['senha']=$senha;
+			header("Location:paginas/mainFuncionario.php");
+		}
+	}
 	
-	header("Location: http://$host$uri/$extra");
-	exit;
 }
 require 'includes/header.html';
 ?>
