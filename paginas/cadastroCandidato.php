@@ -39,36 +39,36 @@ require '../includes/header.html';
     <h3 class="panel-title">Cadastro de Candidato</h3>
   </div>
   <div class="panel-body">
-  	<form class="form-horizontal" role="form" method="post">
+  	<form class="form-horizontal" role="form" method="post" action="../bd/cad_candidato.php">
   		<div class="form-group">
     		<label for="lbnomeCompleto" class="col-sm-2 control-label">Nome Completo</label>
     		<div class="col-sm-4">
-      			<input type="text" class="form-control" id="inomeCompleto"  placeholder="Informe o nome completo">
+      			<input type="text" class="form-control" id="inomeCompleto" name="inomeCompleto" placeholder="Informe o nome completo">
     		</div>
     	</div>
     	<div class="form-group">
     		<label for="lbcpf" class="col-sm-2 control-label">CPF</label>
     		<div class="col-sm-2">
-      			<input type="text" class="form-control" id="icpf"  placeholder="Informe o CPF">
+      			<input type="number" class="form-control" id="icpf" name="icpf" placeholder="Informe o CPF">
     		</div>
     		<div class="col-sm-3">
       			<label for="lbrg" class="col-sm-2 control-label">RG</label>
       			<div class="col-sm-6">
-      				<input type="text" class="form-control" id="irg"  placeholder="RG">
+      				<input type="number" class="form-control" id="irg" name="irg" placeholder="RG">
     			  </div>
     		</div>
     	</div>
       <div class="form-group">
         <label for="lbdtNascimento" class="col-sm-2 control-label">Data Nascimento</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="idtNascimento"  placeholder="Data de nascimento">
+            <input type="date" class="form-control" id="idtNascimento" name="idtNascimento" placeholder="Data de nascimento">
         </div>
         <div class="col-sm-3">
             <label for="lbsexo" class="col-sm-2 control-label">Sexo</label>
             <div class="col-sm-4">
-              <select class="form-control"  id="slsexo">
-                <option>F</option>
-                <option>M</option>
+              <select class="form-control"  id="slsexo" name="slsexo">
+                <option value=F>F</option>
+                <option value=M>M</option>
               </select>
             </div>
         </div>
@@ -76,19 +76,19 @@ require '../includes/header.html';
       <div class="form-group">
         <label for="lbtel1" class="col-sm-2 control-label">Telefone</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="itel1"  placeholder="Residêncial">
+            <input type="text" class="form-control" id="itel1" name="itel1" placeholder="Residêncial">
         </div>
         <div class="col-sm-1">
-            <input type="text" class="form-control" id="itel2"  placeholder="Celular">
+            <input type="text" class="form-control" id="itel2" name="itel2" placeholder="Celular">
         </div>
         <div class="col-sm-1">
-            <input type="text" class="form-control" id="itel3"  placeholder="Outro">
+            <input type="text" class="form-control" id="itel3" name="itel3" placeholder="Outro">
         </div>
       </div>
       <div class="form-group">
         <label for="lbescolaridade" class="col-sm-2 control-label">Escolaridade</label>
           <div class="col-sm-4">
-            <select class="form-control"  id="slescolaridade"> <!--infomacao vem do banco-->
+            <select class="form-control"  id="slescolaridade" name="slescolaridade"> <!--infomacao vem do banco-->
               <?php
               $sql="SELECT*FROM escolaridade";
               $result=mysql_query($sql);
@@ -102,7 +102,7 @@ require '../includes/header.html';
       <div class="form-group">
         <label for="lbeleitor" class="col-sm-2 control-label">Título de Eleitor</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="ieleitor"  placeholder="Título de Eleitor">
+            <input type="text" class="form-control" id="ieleitor" name="ieleitor" placeholder="Título de Eleitor">
         </div>
       </div>
       <hr />
@@ -170,20 +170,21 @@ require '../includes/header.html';
       <div class="form-group">
         <label for="lbemail" class="col-sm-2 control-label">Email</label>
         <div class="col-sm-4">
-          <input type="email" class="form-control" id="iemail"  placeholder="Informe Email">
+          <input type="email" class="form-control" id="iemail" name="iemail" placeholder="Informe Email">
         </div>
       </div>
       <div class="form-group">
         <label for="lbsenha" class="col-sm-2 control-label">Senha</label>
         <div class="col-sm-2">
-            <input type="password" class="form-control" id="isenha"  placeholder="Senha">
+            <input type="password" class="form-control" id="isenha" name="isenha" placeholder="Senha">
         </div>
       </div>
       &nbsp&nbsp&nbsp&nbsp
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-      <a href="mainAluno.php" class="btn btn-primary" style="width: 25%;" id="cadastroCandidato">Cadastrar</a>
+        <input name="cadastrar" type="submit" class="btn btn-primary" style="width:25%;" id="cadastrar" value="Cadastrar">
+      <!--<a href="mainAluno.php" class="btn btn-primary" style="width: 25%;" id="cadastroCandidato">Cadastrar</a>-->
     </div>
     </form>
   </div>
