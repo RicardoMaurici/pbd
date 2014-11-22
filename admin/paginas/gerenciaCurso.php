@@ -1,6 +1,7 @@
 <?php
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
+include('../../conecta.php');
 //Pagina principal após o login
 ?>
 
@@ -37,32 +38,28 @@ require '../includes/menuAdmin.php';
 	              <th>Excluir</th>
 	            </thead>
 	           <tbody>
-    
-	            	<tr> <!--Alimenta Banco de Dados-->
-		                <td>1</td>
-		                <td>Extensivo</td>
-		                <td>Noturno</td>
-		                <td>80</td>
-		                <td>01/02/2014</td>
-		                <td>20/02/2014</td>
-		                <td>01/03/2014</td>
-		                <td>20/03/2014</td>
-		              	<td><p><a href="alterarCurso.php" class="btn btn-warning btn-xs">Alterar</a>
-		              	<td><p><a href="deletarCurso.php" class="btn btn-danger btn-xs">Excluir</a>
+<?php
+    $sql="SELECT * FROM Curso";
+              $result=mysql_query($sql);
+              while($row=mysql_fetch_array($result)){
+?>
+              	<tr> <!--Alimenta Banco de Dados-->
+		                <td><?php echo $row['idCurso']; ?></td>
+		                <td><?php echo $row['turno']; ?></td>
+		                <td><?php echo $row['vagas']; ?></td>
+		                <td><?php echo $row['tipo']; ?></td>
+		                <td><?php echo $row['tdInicioMatricula']; ?></td>
+		                <td><?php echo $row['dtFimMatricula']; ?></td>
+		                <td><?php echo $row['dtInicioInscricao']; ?></td>
+		                <td><?php echo $row['dtFimInscricao']; ?></td>
+		              	<td><p><a href="alterarCurso.php?curso=<?php echo $row['idCurso']; ?>" class="btn btn-warning btn-xs">Alterar</a>
+		              	<td><p><a href="deletarCurso.php?curso=<?php echo $row['idCurso']; ?>" class="btn btn-danger btn-xs">Excluir</a>
 		            </tr>
-	              
-	           		<tr>
-	           			<td>2</td>
-		                <td>Intensivo</td>
-		                <td>Matutino</td>
-		                <td>75</td>
-		                <td>01/06/2014</td>
-		                <td>20/06/2014</td>
-		                <td>01/07/2014</td>
-		                <td>20/06/2014</td>
-		              	<td><p><a href="alterarCurso.php" class="btn btn-warning btn-xs">Alterar</a>
-		              	<td><p><a href="deletarCurso.php" class="btn btn-danger btn-xs">Excluir</a>
-		            </tr>
+              
+          		
+<?php 
+			} 
+?>	           	             
            		</tbody>       
        		  </table>     
     		</div>
