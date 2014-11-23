@@ -15,8 +15,8 @@ require '../includes/menuAdmin.php';
    			<div class="col-md-12">
 		        <div class="table-responsive"> 
 		        <?php 	
-		        	$sql = "SELECT * FROM disciplina, disciplina_material, material WHERE disciplina.idDisciplina=disciplina_material.idDisciplina";
-					$busca = mysql_query($sql)or die(mysql_error());
+		        	$sql = "SELECT d.nome as nomeD, d.idDisciplina as idD FROM disciplina as d";
+					$busca = mysql_query($sql) or die(mysql_error());
 				?> 
 		          <table id="mytable" class="table table-bordred table-striped">    
 		            <thead>
@@ -27,24 +27,25 @@ require '../includes/menuAdmin.php';
 		              <th>Excluir</th>
 		            </thead>
 		            <tbody>
+		            	<!--Adiciona a relacao de disciplinas-->
     				<?php while ($row = mysql_fetch_array($busca))
 					{
+						//Para cada disciplina busca os materiais relacionados
+						$sqlMaterial = "SELECT m.nome as nomeM FROM disciplina_material as dm, material m WHERE dm.idDisciplina=".$row['idD']." and dm.idMaterial=m.idMaterial";
+						$result = mysql_query($sqlMaterial) or die(mysql_error());
+						$materiais="";
+						while ($mat = mysql_fetch_array($result)){
+							$materiais.=$mat['nomeM']."; ";
+						}
 					?>
 		            	<tr> <!--Alimenta Banco de Dados-->
-			                <td><?php echo $row['disciplina.nome'];?></td>
+			                <td><?php echo $row['nomeD'];?></td>
 			                <td>José, Maria</td>
-			                <td><?php echo$row['material'];?></td>
-			              	<td><p><a href="alterarDisciplina.php" class="btn btn-warning btn-xs">Alterar</a></p></td>
-               				 <!--<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>-->
-                			<td><p><a href="deletarDisciplina.php" class="btn btn-danger btn-xs">Deletar</a></p></td>
-			            </tr>
-	              
-	             		<tr>
-			                <td>Química</td>
-			                <td>Maria</td>
-			                <td> - </td>
-			                <td><p><a href="alterarDisciplina.php" class="btn btn-warning btn-xs">Alterar</a></p></td>
-			                <td><p><a href="deletarDisciplina.php" class="btn btn-danger btn-xs">Deletar</a></p></td>
+			                <td><?php echo$materiais;?></td>
+			              	<td><p><?php echo '<a class="btn btn-warning btn-xs" href="alterarDisciplina.php?id='.$row['idD'].'">Alterar</a>';?></p></td>
+               				 <!--<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>
+               				 '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';-->
+                			<td><p><?php echo '<a href="deletarDisciplina.php?id='.$row['idD'].'" class="btn btn-danger btn-xs">Deletar</a>';?></p></td>
 			            </tr>
 			            <?php } ?>
             		</tbody>       

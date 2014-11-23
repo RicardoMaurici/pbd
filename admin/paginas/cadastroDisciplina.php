@@ -20,7 +20,7 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <label for="lbmateriais" class="col-sm-2 control-label">Materiais</label>
           <div class="col-sm-4">
-            <select multiple class="form-control" name="materiais" id="materiais"> <!--infomacao vem do banco-->
+            <select multiple class="form-control" name="materiais[]" id="materiais"> <!--infomacao vem do banco-->
               <?php
               $sql="SELECT*FROM material";
               $result=mysql_query($sql);
