@@ -10,28 +10,35 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Alteração de Disciplina</h3>
   </div>
   <div class="panel-body"style="margin-left:300px;" >
-  	<form class="form-horizontal" role="form" action="alt_disciplina.php" method="post" >
+    <?php $id=$_GET['id']; ?>
+  	<form class="form-horizontal" role="form" action="bd/alt_disciplina.php?id=<?php echo $id?>" method="post" >
       <?php
-        $id = $_GET['id'];
-        $sql="SELECT*FROM disciplina WHERE idDisciplina='$id'";
-        $result=mysql_fetch_array(mysql_query($sql));
+        $sqld="SELECT*FROM disciplina WHERE idDisciplina='$id'";
+        $resultd=mysql_fetch_array(mysql_query($sqld));
         ?>
   		<div class="form-group">
     		<label for="lbDisciplina" class="col-sm-2 control-label">Disciplina</label>
     		<div class="col-sm-4">
-      			<input type="text" class="form-control" id="iDisciplina" placeholder="Informe o nome da disciplina" value="<?php echo "$result[nome]"?>">
+      			<input type="text" required class="form-control" id="iDisciplina" name="iDisciplina" placeholder="Informe o nome da disciplina" value="<?php echo "$resultd[nome]"?>">
     		</div>
     	</div>
       <div class="form-group">
         <label for="lbinteresse" class="col-sm-2 control-label">Materiais</label>
           <div class="col-sm-4">
-            <select multiple class="form-control"> <!--infomacao vem do banco-->
-              <option>Apostila Biologia</option>
-              <option>Apostila Inglês</option>
-              <option>Apostila Matemática</option>
-              <option>Apostila Português</option> 
-              <option>Caderno</option>
-              <option>Lápis</option>
+            <select multiple class="form-control" name="materiais[]" id="materiais"> <!--infomacao vem do banco-->
+              <?php
+              $sql="SELECT*FROM material";
+              $result=mysql_query($sql);
+              while($row=mysql_fetch_array($result)){
+                $sqlMaterial = "SELECT m.idMaterial as idM FROM disciplina_material as dm, material m WHERE dm.idDisciplina=".$id." and dm.idMaterial=".$row['idMaterial'];
+                $mate = mysql_query($sqlMaterial) or die(mysql_error());
+                if(mysql_num_rows($mate)!=0){
+                  ?><option selected value=<?php echo $row['idMaterial'];?>><?php echo $row['nome']; ?></option>
+                <?php } else{ ?>
+                 <option value=<?php echo $row['idMaterial'];?>><?php echo $row['nome']; ?></option>
+                <?php
+                }
+              } ?>
             </select>
           </div>
       </div>
@@ -39,8 +46,7 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-        <button type="submit" href="gerenciaDisciplina.php" class="btn btn-warning" style="width:30%;">Alterar</button>
-        <a href="gerenciaDisciplina.php" class="btn btn-warning" style="width:30%;">Alterar</a>
+        <button type="submit" class="btn btn-warning" style="width:30%;" id="alterar" name="alterar">Alterar</button>
     </div>
 	</form>
 </div>

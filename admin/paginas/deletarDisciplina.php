@@ -9,9 +9,10 @@ require '../includes/menuAdmin.php';
   </div>
   <div class="panel-body">
   	<form class="form-horizontal" role="form">
+      <?php $idD=$_GET['id']; ?>
       </div>
         <div class="alert alert-warning" style="width: 500px; margin-left:350px;"><p>Você tem certeza que deseja excluir esse cadastro? </p> 
-          <a href="gerenciaDisciplina.php" style="width: 80px; margin-left: 280px; margin-top: 20px;" class="btn btn-danger">Sim</a>
+          <?php echo '<a href="bd/del_disciplina.php?id='.$idD.'" style="width: 80px; margin-left: 280px; margin-top: 20px;" class="btn btn-danger" id="deletar" name="deletar">SIM</a>';?>
           <a href="gerenciaDisciplina.php" style="width: 80px; margin-left: 20px; margin-top: 20px;" class="btn btn-warning">Não</a>
         </div>
     </form>
