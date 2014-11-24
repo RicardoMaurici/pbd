@@ -1,6 +1,7 @@
 <?php
 include('../../../conecta.php');
 
+
 //pega dados form e coloca no banco
 if(getenv("REQUEST_METHOD")!="POST"){
 	header("Location: ../gerenciaDisciplina.php");
@@ -27,7 +28,7 @@ if(getenv("REQUEST_METHOD")!="POST"){
 			echo '<script>alert("'.mysql_error().'")</script>';
 			}else{
 			echo '<meta http-equiv="refresh" content="0;url=../gerenciaDisciplina.php">';
-			echo '<script>alert("Alteracao realizada com sucesso!")</script>';
+			echo '<script>alert("Alteração realizada com sucesso!")</script>';
 			}
 
 		}

@@ -1,4 +1,4 @@
- 
+<?php header('Content-Type: text/html; charset=utf-8'); ?>
 <!-- Menu com seus devidos links -->
 <nav id="navbar-example" class="navbar navbar-default navbar-static col-md-10 col-md-offset-1" role="navigation">
     <div class="container-fluid">
