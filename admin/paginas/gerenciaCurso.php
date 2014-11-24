@@ -14,7 +14,7 @@ if(isset($_POST['alterar'])){
 	$tI = $_POST['terminoInscCurso'];
 	$id = $_POST['idCurso'];
 
-	if(strtotime($_POST['inicioMatCurso']) < strtotime($_POST['terminoMatCurso']) AND strtotime($_POST['terminoMatCurso']) < strtotime($_POST['inicioInscCurso']) AND strtotime($_POST['inicioInscCurso']) < strtotime($_POST['terminoInscCurso'])){
+	if(time() < strtotime($_POST['inicioMatCurso']) AND strtotime($_POST['inicioMatCurso']) < strtotime($_POST['terminoMatCurso']) AND strtotime($_POST['terminoMatCurso']) < strtotime($_POST['inicioInscCurso']) AND strtotime($_POST['inicioInscCurso']) < strtotime($_POST['terminoInscCurso'])){
 
 		$sql = "UPDATE `Curso` SET `turno`='$tn',`vagas`=$vg,`tipo`='$tp', `dtInicioMatricula`='$iMat', `dtFimMatricula`= '$tMat',
 			`dtInicioInscricao`='$iI',`dtFimInscricao`='$tI' WHERE idCurso=$id";

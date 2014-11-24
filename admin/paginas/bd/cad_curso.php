@@ -14,7 +14,7 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$dtIinsc = strtotime(str_replace('/', '-', $_POST['inicioInscCurso']));
 		$dtTinsc = strtotime(str_replace('/', '-', $_POST['terminoInscCurso']));
 
-		if($dtIMat < $dtTMat  AND $dtTMat < $dtIinsc AND $dtIinsc < $dtTinsc){
+		if(time() < $dtIMat AND $dtIMat  < $dtTMat  AND $dtTMat < $dtIinsc AND $dtIinsc < $dtTinsc){
 
 			$inicioMat = date('Y-m-d',$dtIMat);
 			$terminoMat = date('Y-m-d',$dtTMat);

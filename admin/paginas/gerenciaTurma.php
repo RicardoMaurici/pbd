@@ -1,6 +1,8 @@
 <?php
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
+include('../../conecta.php');
+
 //Pagina principal após o login
 ?>
 
@@ -9,15 +11,6 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Gerenciar Turmas</h3>
   </div>
   <div class="panel-body">
-	<form class="form-inline" role="form">
-     	<div class="form-group">
-     		<input type="text" class="form-control" id="ibuscacurso" placeholder="Insira o idCurso desejado">
-  			<a href="gerenciaTurma.php" class="btn btn-primary">Buscar</a>
-  			<input type="text" class="form-control" id="ibuscaturma" placeholder="Insira o idTurma desejado">
-  			<a href="gerenciaTurma.php" class="btn btn-primary">Buscar</a>
-  		</div>
-  	</form>
-  	<hr />
   	<a href="cadastroTurma.php" class="btn btn-primary">Cadastrar</a>
   	<div class="row">    
    		<div class="col-md-12">

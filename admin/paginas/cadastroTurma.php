@@ -1,7 +1,7 @@
 <?php
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
-//Pagina principal após o login
+include('../../conecta.php');
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
@@ -13,9 +13,15 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <label for="lbcurso" class="col-sm-2 control-label">Curso</label>
           <div class="col-sm-5">
-            <select class="form-control" id="slcurso"> <!--infomacao vem do banco-->
-              <option>1 - Extensivo - Noturno 2014</option> 
-              <option>2 - Intensivo - Matutino 2014</option>
+           <select class="form-control" id="slcurso"> <!--infomacao vem do banco-->
+<?php
+           $sql="SELECT  idCurso, concat(idCurso,' - ',tipo,' - ',turno,' ', year(dtInicioInscricao)) FROM Curso ";
+           $result=mysql_query($sql);
+           while($row=mysql_fetch_array($result)){
+?>
+              <option value=<?php echo $row['idCurso'];?>><?php echo $row[1]; ?></option>
+<?php }
+?>
             </select>
         </div>
       </div>
@@ -23,9 +29,14 @@ require '../includes/menuAdmin.php';
   		<label for="lbtipo" class="col-sm-2 control-label">Sala</label>
           <div class="col-sm-2">
             <select class="form-control" id="sltipo"> <!--infomacao vem do banco-->
-              <option>Sala - 1</option> 
-              <option>Sala - 2</option>
-              <option>Sala - 3</option>
+<?php
+           $sql="SELECT  idSala FROM Sala ";
+           $result=mysql_query($sql);
+           while($row=mysql_fetch_array($result)){
+?>
+              <option value=<?php echo $row['idSala'];?>><?php echo'Sala - '. $row['idSala']; ?></option>
+<?php }
+?>
             </select>
           </div>
 		</div>
