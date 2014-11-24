@@ -1,8 +1,9 @@
 <?php
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
-include('../conecta.php');
+include('../../conecta.php');
 //Pagina principal após o login
+
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">

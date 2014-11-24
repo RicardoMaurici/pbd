@@ -3,6 +3,39 @@ require '../includes/header.html';
 require '../includes/menuAdmin.php';
 include('../../conecta.php');
 //Pagina principal após o login
+if(isset($_POST['alterar'])){
+
+	$tp = $_POST['tipoCurso'];
+	$tn = $_POST['turnoCurso'];
+	$vg = $_POST['vagasCurso'];
+	$iMat = $_POST['inicioMatCurso'];
+	$tMat = $_POST['terminoMatCurso'];
+	$iI = $_POST['inicioInscCurso'];
+	$tI = $_POST['terminoInscCurso'];
+	$id = $_POST['idCurso'];
+
+	$sql = "UPDATE `Curso` SET `turno`='$tn',`vagas`=$vg,`tipo`='$tp', `dtInicioMatricula`='$iMat', `dtFimMatricula`= '$tMat',
+		`dtInicioInscricao`='$iI',`dtFimInscricao`='$tI' WHERE idCurso=$id";
+
+	$result=mysql_query($sql);
+		if(!$result){
+			echo '<meta http-equiv="refresh" content="0;url=alterarCurso.php?curso='.$_POST['idCurso'].'">';
+			echo '<script>alert("'.mysql_error().'")</script>';
+		}else{
+			echo '<script>alert("Alteração realizada com sucesso!")</script>';
+		} 
+}
+
+if(isset($_POST['deleta'])){
+	$id = $_POST['idCurso'];
+	$sql = "DELETE FROM `Curso` WHERE `idCurso` = $id";
+	$result=mysql_query($sql);
+	if(!$result){
+		echo '<script>alert("'.mysql_error().'")</script>';
+	}else{
+		echo '<script>alert("Exclusão realizada com sucesso!")</script>';
+	} 
+}
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
@@ -10,14 +43,6 @@ include('../../conecta.php');
     <h3 class="panel-title">Gerenciar Cursos</h3>
   </div>
   <div class="panel-body">
-	<form class="form-inline" role="form">
-     	<div class="form-group">
-     		<input type="text" class="form-control" id="ibuscacurso" placeholder="Insira o idCurso desejado">
-  			<a href="gerenciaCurso.php" class="btn btn-primary">Buscar</a>
-  			<a href="gerenciaCurso.php" class="btn btn-primary">Buscar Cursos com Matrículas Aberta</a>
-  			<a href="gerenciaCurso.php" class="btn btn-primary">Buscar Cursos com Inscrições Aberta</a>
-  		</div>
-  	</form>
   	<hr />
   	<a href="cadastroCurso.php" class="btn btn-primary">Cadastrar</a>
   	<div class="row">    
@@ -42,13 +67,14 @@ include('../../conecta.php');
     $sql="SELECT * FROM Curso";
               $result=mysql_query($sql);
               while($row=mysql_fetch_array($result)){
-?>
+
+?>				
               	<tr> <!--Alimenta Banco de Dados-->
 		                <td><?php echo $row['idCurso']; ?></td>
 		                <td><?php echo $row['turno']; ?></td>
 		                <td><?php echo $row['vagas']; ?></td>
 		                <td><?php echo $row['tipo']; ?></td>
-		                <td><?php echo $row['tdInicioMatricula']; ?></td>
+		                <td><?php echo $row['dtInicioMatricula']; ?></td>
 		                <td><?php echo $row['dtFimMatricula']; ?></td>
 		                <td><?php echo $row['dtInicioInscricao']; ?></td>
 		                <td><?php echo $row['dtFimInscricao']; ?></td>
