@@ -14,16 +14,22 @@ if(isset($_POST['alterar'])){
 	$tI = $_POST['terminoInscCurso'];
 	$id = $_POST['idCurso'];
 
-	$sql = "UPDATE `Curso` SET `turno`='$tn',`vagas`=$vg,`tipo`='$tp', `dtInicioMatricula`='$iMat', `dtFimMatricula`= '$tMat',
-		`dtInicioInscricao`='$iI',`dtFimInscricao`='$tI' WHERE idCurso=$id";
+	if(strtotime($_POST['inicioMatCurso']) < strtotime($_POST['terminoMatCurso']) AND strtotime($_POST['terminoMatCurso']) < strtotime($_POST['inicioInscCurso']) AND strtotime($_POST['inicioInscCurso']) < strtotime($_POST['terminoInscCurso'])){
 
-	$result=mysql_query($sql);
+		$sql = "UPDATE `Curso` SET `turno`='$tn',`vagas`=$vg,`tipo`='$tp', `dtInicioMatricula`='$iMat', `dtFimMatricula`= '$tMat',
+			`dtInicioInscricao`='$iI',`dtFimInscricao`='$tI' WHERE idCurso=$id";
+
+		$result=mysql_query($sql);
 		if(!$result){
 			echo '<meta http-equiv="refresh" content="0;url=alterarCurso.php?curso='.$_POST['idCurso'].'">';
 			echo '<script>alert("'.mysql_error().'")</script>';
 		}else{
 			echo '<script>alert("Alteração realizada com sucesso!")</script>';
-		} 
+		}
+	}else{
+		echo '<meta http-equiv="refresh" content="0;url=alterarCurso.php?curso='.$_POST['idCurso'].'">';
+		echo '<script>alert("Datas não seguem ordem cronológica!")</script>';
+	}
 }
 
 if(isset($_POST['deleta'])){

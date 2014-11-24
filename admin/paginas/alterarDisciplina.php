@@ -29,7 +29,6 @@ require '../includes/menuAdmin.php';
               <?php
               $sql="SELECT*FROM material";
               $result=mysql_query($sql);
-              echo '<script>alert("AAA")</script>';
               while($row=mysql_fetch_array($result)){
                 $sqlMaterial = "SELECT m.idMaterial as idM FROM disciplina_material as dm, material m WHERE dm.idDisciplina=".$id." and dm.idMaterial=".$row['idMaterial'];
                 $mate = mysql_query($sqlMaterial) or die(mysql_error());
