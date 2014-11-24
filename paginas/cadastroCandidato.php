@@ -67,8 +67,8 @@ require '../includes/header.html';
             <label for="lbsexo" class="col-sm-2 control-label">Sexo</label>
             <div class="col-sm-4">
               <select class="form-control"  id="slsexo" name="slsexo">
-                <option value=F>F</option>
-                <option value=M>M</option>
+                <option value='F'>F</option>
+                <option value='M'>M</option>
               </select>
             </div>
         </div>
@@ -90,7 +90,7 @@ require '../includes/header.html';
           <div class="col-sm-4">
             <select class="form-control"  id="slescolaridade" name="slescolaridade"> <!--infomacao vem do banco-->
               <?php
-              $sql="SELECT*FROM escolaridade";
+              $sql="SELECT*FROM escolaridade WHERE idEscolaridade>2";
               $result=mysql_query($sql);
               while($row=mysql_fetch_array($result)){
               ?>
@@ -184,8 +184,7 @@ require '../includes/header.html';
         <div class="col-sm-2">
         </div>
         <input name="cadastrar" type="submit" class="btn btn-primary" style="width:25%;" id="cadastrar" value="Cadastrar">
-      <!--<a href="mainAluno.php" class="btn btn-primary" style="width: 25%;" id="cadastroCandidato">Cadastrar</a>-->
-    </div>
+      </div>
     </form>
   </div>
   </div>  

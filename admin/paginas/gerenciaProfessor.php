@@ -1,4 +1,5 @@
 <?php
+include ('../../conecta.php');
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
 //Pagina principal após o login
@@ -10,13 +11,15 @@ require '../includes/menuAdmin.php';
   </div>
   <div class="panel-body">
   <a href="cadastroProfessor.php" class="btn btn-primary">Cadastrar</a>
-  <!--<button class="btn btn-primary" data-title="Cadastrar" data-toggle="modal" data-target="#cadastrar" data-placement="top" rel="tooltip">Cadastrar</button>-->
   <div class="row">    
     <div class="col-md-12">
-        <div class="table-responsive">  
+        <div class="table-responsive"> 
+        <?php   
+              $sql = "SELECT * FROM professor";
+              $busca = mysql_query($sql) or die(mysql_error());
+        ?>  
           <table id="mytable" class="table table-bordred table-striped">    
             <thead>
-              <th></th>
               <th>Nome</th>
               <th>CPF</th>
               <th>Email</th>
@@ -25,27 +28,20 @@ require '../includes/menuAdmin.php';
               <th>Excluir</th>
             </thead>
             <tbody>
-    
+            <?php while ($row = mysql_fetch_array($busca))
+            {
+              $dtNascimento=date('d/m/Y',strtotime(str_replace('/', '-', $row['dtNascimento'])));
+            ?>
               <tr> <!--Alimenta Banco de Dados-->
-                <td><input type="checkbox" class="checkthis" /></td>
-                <td>José</td>
-                <td>999.999.999-99</td>
-                <td>jose@email.com</td>
-                <td>01/01/1081</td>
-                <td><p><a href="alterarProfessor.php" class="btn btn-warning btn-xs">Alterar</a></p></td>
+                <td><?php echo $row['nomeCompleto'];?></td>
+                <td><?php echo $row['CPF'];?></td>
+                <td><?php echo $row['email'];?>j</td>
+                <td><?php echo $dtNascimento;?></td>
+                <td><p><?php echo '<a class="btn btn-warning btn-xs" href="alterarProfessor.php?id='.$row['idPessoa'].'">Alterar</a>';?></p></td>
                 <!--<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>-->
-                <td><p><a href="deletarProfessor.php" class="btn btn-danger btn-xs">Deletar</a></p></td>
+                <td><p><?php echo '<a href="deletarProfessor.php?id='.$row['idPessoa'].'" class="btn btn-danger btn-xs">Deletar</a>';?></p></td>
               </tr>
-              
-              <tr>
-                <td><input type="checkbox" class="checkthis" /></td>
-                <td>Maria</td>
-                <td>111.111.111-11</td>
-                <td>maria@email.com</td>
-                <td>02/02/1982</td>
-                <td><p><a href="alterarProfessor.php" class="btn btn-warning btn-xs">Alterar</a></p></td>
-                <td><p><a href="deletarProfessor.php" class="btn btn-danger btn-xs">Deletar</a></p></td>
-              </tr>
+              <?php } ?>
             </tbody>       
           </table>     
         </div>

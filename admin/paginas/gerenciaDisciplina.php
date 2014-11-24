@@ -37,11 +37,19 @@ require '../includes/menuAdmin.php';
 						while ($mat = mysql_fetch_array($result)){
 							$materiais.=$mat['nomeM']."; ";
 						}
+
+						//Para cada disciplina busca os professores que lecionam
+						$sqlProf = "SELECT p.nomeCompleto as nomeP FROM professor_disciplina as pd, professor p WHERE pd.idDisciplina=".$row['idD']." and pd.idPessoa=p.idPessoa";
+						$resultP = mysql_query($sqlProf) or die(mysql_error());
+						$professores="";
+						while ($prof = mysql_fetch_array($resultP)){
+							$professores.=$prof['nomeP']."; ";
+						}
 					?>
 		            	<tr> <!--Alimenta Banco de Dados-->
 			                <td><?php echo $row['nomeD'];?></td>
-			                <td>José, Maria</td>
-			                <td><?php echo$materiais;?></td>
+			                <td><?php echo $professores; ?></td>
+			                <td><?php echo $materiais; ?></td>
 			              	<td><p><?php echo '<a class="btn btn-warning btn-xs" href="alterarDisciplina.php?id='.$row['idD'].'">Alterar</a>';?></p></td>
                				 <!--<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>
                				 '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';-->

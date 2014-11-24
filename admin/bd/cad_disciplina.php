@@ -24,11 +24,11 @@ if(getenv("REQUEST_METHOD")!="POST"){
 				$result=mysql_query($sql);
 			}
 			if(!$result){
-			echo '<meta http-equiv="refresh" content="0;url=../paginas/cadastroDisciplina.php">';
-			echo '<script>alert("'.mysql_error().'")</script>';
+				echo '<meta http-equiv="refresh" content="0;url=../paginas/cadastroDisciplina.php">';
+				echo '<script>alert("'.mysql_error().'")</script>';
 			}else{
-			echo '<meta http-equiv="refresh" content="0;url=../paginas/gerenciaDisciplina.php">';
-			echo '<script>alert("Cadastro realizado com sucesso!")</script>';
+				echo '<meta http-equiv="refresh" content="0;url=../paginas/gerenciaDisciplina.php">';
+				echo '<script>alert("Cadastro realizado com sucesso!")</script>';
 			}
 
 		}

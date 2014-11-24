@@ -24,8 +24,6 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$email=$_POST['iemail'];
 		$senha=$_POST['isenha'];
 
-		echo '<script>alert("'.$dtNascimento.'")</script>';
-
 		$sql="INSERT INTO candidato (idPessoa, CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, tituloEleitor, idEndereco, idEscolaridade)
 		VALUES ('5', '$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$eleitor', '$endereco','$escolaridade')";
 		

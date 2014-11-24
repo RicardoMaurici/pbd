@@ -3,7 +3,7 @@ include('../../../conecta.php');
 
 //pega dados form e coloca no banco
 if(getenv("REQUEST_METHOD")!="POST"){
-	header("Location: ../paginas/gerenciaDisciplina.php");
+	header("Location: ../gerenciaDisciplina.php");
 }else{
 	if(isset($_POST['alterar'])){
 		$idD=$_GET['id'];
