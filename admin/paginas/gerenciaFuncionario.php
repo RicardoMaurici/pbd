@@ -1,4 +1,5 @@
 <?php
+include ('../../conecta.php');
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
 //Pagina principal após o login
@@ -12,39 +13,50 @@ require '../includes/menuAdmin.php';
 	<a href="cadastroFuncionario.php" class="btn btn-primary">Cadastrar</a>
   	<div class="row">    
    			<div class="col-md-12">
-		        <div class="table-responsive">  
+		        <div class="table-responsive"> 
+		        <?php   
+             		$sql = "SELECT * FROM funcionario";
+              		$busca = mysql_query($sql) or die(mysql_error());
+        		?>   
 		          <table id="mytable" class="table table-bordred table-striped">    
 		            <thead>
-		              <th></th>
 		              <th>Nome</th>
 		              <th>CPF</th>
 		              <th>Email</th>
 		              <th>Dt Nascimento</th>
+		              <th>Cargo</th>
+		              <th>Privilégio</th>
 		              <th>Alterar</th>
 		              <th>Excluir</th>
 		            </thead>
 		            <tbody>
-    
+                	<?php while ($row = mysql_fetch_array($busca))
+            			{
+              			$dtNascimento=date('d/m/Y',strtotime(str_replace('/', '-', $row['dtNascimento'])));
+              			$cargo=mysql_fetch_array(mysql_query("SELECT * FROM cargo WHERE idFuncao=".$row['idFuncao']));
+              			session_start();
+              			$user=$_SESSION['login'];
+              			if($row['privilegio']==0)
+              				$privilegio="Não";
+              			else
+              				$privilegio="Sim";
+            		?>
 		            	<tr> <!--Alimenta Banco de Dados-->
-			                <td><input type="checkbox" class="checkthis" /></td>
-			                <td>José</td>
-			                <td>999.999.999-99</td>
-			                <td>jose@email.com</td>
-			                <td>01/01/1081</td>
-			              	<td><p><a href="alterarFuncionario.php" class="btn btn-warning btn-xs">Alterar</a></p></td>
-               				 <!--<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>-->
-                			<td><p><a href="deletarFuncionario.php" class="btn btn-danger btn-xs">Deletar</a></p></td>
+			                <td><?php echo $row['nomeCompleto'];?></td>
+			                <td><?php echo $row['CPF'];?></td>
+			                <td><?php echo $row['email'];?></td>
+			                <td><?php echo $dtNascimento;?></td>
+			                <td><?php echo $cargo[3];?></td>
+			                <td><?php echo $privilegio;?></td>
+			        <?php
+			        	if($user==$row['nomeUsuario']){ ?>
+			              	<td><p><?php echo '<a class="btn btn-warning btn-xs" disabled href="alterarFuncionario.php?id='.$row['idPessoa'].'">Alterar</a>';?></p></td>
+               				<td><p><?php echo '<a disabled href="deletarFuncionario.php?id='.$row['idPessoa'].'" class="btn btn-danger btn-xs">Deletar</a>';?></p></td>
 			            </tr>
-	              
-	             		<tr>
-			                <td><input type="checkbox" class="checkthis" /></td>
-			                <td>Maria</td>
-			                <td>111.111.111-11</td>
-			                <td>maria@email.com</td>
-			                <td>02/02/1982</td>
-			                <td><p><a href="alterarFuncionario.php" class="btn btn-warning btn-xs">Alterar</a></p></td>
-			                <td><p><a href="deletarFuncionario.php" class="btn btn-danger btn-xs">Deletar</a></p></td>
-			            </tr>
+			            <?php }else{ ?>
+			            	<td><p><?php echo '<a class="btn btn-warning btn-xs" href="alterarFuncionario.php?id='.$row['idPessoa'].'">Alterar</a>';?></p></td>
+               				<td><p><?php echo '<a href="deletarFuncionario.php?id='.$row['idPessoa'].'" class="btn btn-danger btn-xs">Deletar</a>';?></p></td>
+			            <?php }} ?>
             		</tbody>       
           		  </table>     
        			</div>

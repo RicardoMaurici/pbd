@@ -9,10 +9,11 @@ require '../includes/menuAdmin.php';
   </div>
   <div class="panel-body">
   	<form class="form-horizontal" role="form">
+      <?php $idF=$_GET['id']; ?>
       </div>
         <div class="alert alert-warning" style="width: 500px; margin-left:350px;"><p>Você tem certeza que deseja excluir esse cadastro? </p> 
-     		<button type="button" style="width: 80px; margin-left: 280px; margin-top: 20px;" class="btn btn-danger" >Sim</button>
-          	<button type="button" style="width: 80px; margin-left: 20px; margin-top: 20px;" class="btn btn-warning">Não</button>
+     		     <?php echo '<a href="bd/del_funcionario.php?id='.$idF.'" style="width: 80px; margin-left: 280px; margin-top: 20px;" class="btn btn-danger" id="deletar" name="deletar">SIM</a>';?>
+          	 <a href="gerenciaFuncionario.php" style="width: 80px; margin-left: 20px; margin-top: 20px;" class="btn btn-warning">Não</a>
         </div>
     </form>
     </div>

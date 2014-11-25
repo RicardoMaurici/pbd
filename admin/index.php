@@ -33,10 +33,11 @@ if(isset($_POST['login'])){
 	}else{
 		$temp=mysql_fetch_array($result);
 		$adm=$temp['privilegio'];
-		if($adm==0){
+		if($adm==1){
 			session_start();
 			$_SESSION['login']=$login;
 			$_SESSION['senha']=$senha;
+			echo '<script>alert("'.$_SESSION['login'].'")</script>';
 			header("Location:paginas/mainAdmin.php");
 		}else{
 			session_start();

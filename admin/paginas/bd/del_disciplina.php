@@ -11,5 +11,5 @@ include('../../../conecta.php');
 		echo '<script>alert("'.mysql_error().'")</script>';
 	}else{
 		echo '<meta http-equiv="refresh" content="0;url=../gerenciaDisciplina.php">';
-		echo '<script>alert("Exclusao realizada com sucesso!")</script>';
+		echo '<script>alert("Exclusão realizada com sucesso!")</script>';
 	}

@@ -1,4 +1,7 @@
-<?php header('Content-Type: text/html; charset=utf-8'); ?>
+<?php 
+session_start();
+header('Content-Type: text/html; charset=utf-8'); 
+?>
 <!-- Menu com seus devidos links -->
 <nav id="navbar-example" class="navbar navbar-default navbar-static col-md-10 col-md-offset-1" role="navigation">
     <div class="container-fluid">
@@ -14,6 +17,7 @@
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="gerenciaCurso.php">Gerenciar Curso</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="gerenciaDisciplina.php">Gerenciar Disciplinas</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="gerenciaTurma.php">Gerenciar Turma</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="gerenciaAula.php">Gerenciar Aula</a></li>
               </ul>
             </li>
 
@@ -57,7 +61,10 @@
 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../index.php">Sair</a></li>
+            <?php 
+              $user=$_SESSION['login'];
+            ?>
+            <li><?php echo '<a href="../index.php">Sair  ['.$user.'] </a>'?></li>
           </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container-fluid -->

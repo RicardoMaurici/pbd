@@ -29,6 +29,7 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$login=$_POST['ilogin'];
 		$senha=$_POST['isenha'];
 
+		if($salario>0){
 		if($endereco!=0){
 			$sql="INSERT INTO professor (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, salario, PISPASEP,
 			nomeUsuario, complemento, idEndereco, idEscolaridade)
@@ -57,6 +58,12 @@ if(getenv("REQUEST_METHOD")!="POST"){
 			}
 			echo '<meta http-equiv="refresh" content="0;url=../gerenciaProfessor.php">';
 			echo '<script>alert("Cadastro realizado com sucesso!")</script>';
+		
 		}
+			
+	}else{
+		echo '<meta http-equiv="refresh" content="0;url=../cadastroProfessor.php">';
+		echo '<script>alert("Salário Inválido - precisa ser positivo e diferente de zero")</script>';
 	}
+}
 }

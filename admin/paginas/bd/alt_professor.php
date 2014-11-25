@@ -30,6 +30,7 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$login=$_POST['ilogin'];
 		$senha=$_POST['isenha'];
 
+		if($salario>0){
 		if($endereco!=0){
 			$sql="UPDATE professor SET CPF='$cpf',RG='$rg', nomeCompleto='$nomecompleto', email='$email', dtNascimento='$dtNascimento', senha='$senha', sexo='$sexo', salario='$salario', PISPASEP='$pis', nomeUsuario='$login', complemento='$complemento', idEndereco='$endereco', idEscolaridade='$escolaridade'
 			WHERE idPessoa='$idP'";
@@ -40,7 +41,7 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		
 		$result=mysql_query($sql);
 		if(!$result){
-			echo '<meta http-equiv="refresh" content="0;url=../cadastroProfessor.php">';
+			echo '<meta http-equiv="refresh" content="0;url=../alterarProfessor?id='.$idP.'">';
 			echo '<script>alert("'.mysql_error().'")</script>';
 		}else{
 			$sqlA="DELETE FROM areas_professor WHERE idPessoa='$idP'";
@@ -58,7 +59,11 @@ if(getenv("REQUEST_METHOD")!="POST"){
 				$result = mysql_query($sql) or die(mysql_error());
 			}
 			echo '<meta http-equiv="refresh" content="0;url=../gerenciaProfessor.php">';
-			echo '<script>alert("Alteracao realizada com sucesso!")</script>';
+			echo '<script>alert("Alteração realizada com sucesso!")</script>';
 		}
+	}else{
+		echo '<meta http-equiv="refresh" content="0;url=../alterarProfessor.php?id='.$idP.'">';
+		echo '<script>alert("Salário Inválido - precisa ser positivo e diferente de zero")</script>';
+	}
 	}
 }

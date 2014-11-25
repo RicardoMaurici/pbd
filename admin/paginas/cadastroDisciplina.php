@@ -10,7 +10,7 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Cadastro de Disciplina</h3>
   </div>
   <div class="panel-body" style="margin-left:300px;">
-  	<form action="../bd/cad_disciplina.php"class="form-horizontal" role="form" method="post">
+  	<form action="bd/cad_disciplina.php"class="form-horizontal" role="form" method="post">
   		<div class="form-group">
     		<label for="lbDisciplina" class="col-sm-2 control-label">Disciplina</label>
     		<div class="col-sm-4">

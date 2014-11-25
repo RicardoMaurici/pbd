@@ -35,7 +35,7 @@ require '../includes/menuAdmin.php';
               <tr> <!--Alimenta Banco de Dados-->
                 <td><?php echo $row['nomeCompleto'];?></td>
                 <td><?php echo $row['CPF'];?></td>
-                <td><?php echo $row['email'];?>j</td>
+                <td><?php echo $row['email'];?></td>
                 <td><?php echo $dtNascimento;?></td>
                 <td><p><?php echo '<a class="btn btn-warning btn-xs" href="alterarProfessor.php?id='.$row['idPessoa'].'">Alterar</a>';?></p></td>
                 <!--<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>-->

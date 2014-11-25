@@ -203,7 +203,7 @@ require '../includes/menuAdmin.php';
       </div>
       <div class="form-group">
         <label for="lbcomplemento" class="col-sm-2 control-label">Complemento</label>
-        <div class="col-sm-2">
+        <div class="col-sm-4">
             <input type="text" class="form-control" id="icomplemento" name="icomplemento" placeholder="Complemento">
         </div>
       </div>
