@@ -7,10 +7,15 @@ require '../includes/menuAdmin.php';
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
-    <h3 class="panel-title">Cadastro de Aula</h3>
+    <h3 class="panel-title">Alteração de Aula</h3>
   </div>
   <div class="panel-body">
-  	<form class="form-horizontal" role="form" method="post" action="bd/cad_aula.php">
+    <?php 
+    $idP=$_GET['idP'];
+    $idD=$_GET['idD'];
+    $idH=$_GET['idH']; 
+    ?>
+  	<form class="form-horizontal" role="form" method="post" action="bd/alt_aula.php?idP=<?php echo $idP.'&idD='.$idD.'&idH='.$idH   ?>">
       <div class="form-group">
         <label for="lbcurso" class="col-sm-2 control-label">Professor - Disciplina</label>
           <div class="col-sm-5">
@@ -24,9 +29,11 @@ require '../includes/menuAdmin.php';
                 while($row=mysql_fetch_array($result)){
                   $ids = array($row['idP'],$row['idD']);
                   $id=implode(".",$ids);
-              ?>
-                <option value=<?php echo $id;?>><?php echo $row['nomeP']." - ".$row['nomeD']; ?></option>
-              <?php } ?>
+                  if($row['idP']==$idP and $row['idD']==$idD){ ?>
+                    <option selected value=<?php echo $id;?>><?php echo $row['nomeP']." - ".$row['nomeD']; ?></option>
+                  <?php }else{ ?>
+                    <option value=<?php echo $id;?>><?php echo $row['nomeP']." - ".$row['nomeD']; ?></option>
+              <?php }} ?>
             </select>
           </div>
       </div>
@@ -41,9 +48,11 @@ require '../includes/menuAdmin.php';
                   echo '<script>alert("'.mysql_error().'")</script>';
                 }
                 while($row=mysql_fetch_array($result)){
-              ?>
-                <option value=<?php echo $row['idH'];?>><?php echo $row['inicio']." - ".$row['fim'].": ".$row['nomeSem']; ?></option>
-              <?php } ?>
+                  if($row['idH']==$idH){ ?>
+                    <option selected value=<?php echo $row['idH'];?>><?php echo $row['inicio']." - ".$row['fim'].": ".$row['nomeSem']; ?></option>
+                  <?php }else{ ?>
+                     <option value=<?php echo $row['idH'];?>><?php echo $row['inicio']." - ".$row['fim'].": ".$row['nomeSem']; ?></option>
+              <?php }} ?>
             </select>
           </div>
 		</div>
@@ -51,7 +60,7 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-        <input type="submit" class="btn btn-primary" style="width: 25%;" id="cadastrar" name="cadastrar" value="Cadastrar">
+        <input type="submit" class="btn btn-warning" style="width: 25%;" id="alterar" name="alterar" value="Alterar">
     </div>
 	</form> 
   </div>

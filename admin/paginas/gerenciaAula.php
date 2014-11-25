@@ -42,7 +42,7 @@ require '../includes/menuAdmin.php';
 						}
 
 						//Pega nome disciplina
-						$sqlDisciplina = "SELECT d.nome as nomeD FROM disciplina p WHERE d.idDisciplina=".$row['idDisciplina'];
+						$sqlDisciplina = "SELECT d.nome as nomeD FROM disciplina d WHERE d.idDisciplina=".$row['idDisciplina'];
 						$result = mysql_query($sqlDisciplina);
 						if(!$result){
 							echo '<meta http-equiv="refresh" content="0;url=../gerenciaAula.php">';
@@ -70,12 +70,11 @@ require '../includes/menuAdmin.php';
 					?>
 		            	<tr> <!--Alimenta Banco de Dados-->
 			                <td><?php echo $disc['nomeD'];?></td>
-			                <td><?php echo $prof['nomeCompleto']; ?></td>
-			                <td><?php echo $inicio." - ".fim; ?></td>
+			                <td><?php echo $prof['nomeP']; ?></td>
+			                <td><?php echo $inicio." - ".$fim; ?></td>
 			                <td><?php echo $semana; ?></td>
-			                people.php?name=Joe&age=24
 			              	<td><p><?php echo '<a class="btn btn-warning btn-xs" href="alterarAula.php?idP='.$row['idPessoa'].'&idD='.$row['idDisciplina'].'&idH='.$row['idHorario'].'">Alterar</a>';?></p></td>
-               				<td><p><?php echo '<a href="deletarAula.php?idP='.$row['idPessoa'].'&idD='.$row['idDisciplina'].'&idH='.$row['idHorario'].' class="btn btn-danger btn-xs">Deletar</a>';?></p></td>
+               				<td><p><?php echo '<a href="deletarAula.php?idP='.$row['idPessoa'].'&idD='.$row['idDisciplina'].'&idH='.$row['idHorario'].'" class="btn btn-danger btn-xs">Deletar</a>';?></p></td>
 			            </tr>
 			            <?php } ?>
             		</tbody>       
