@@ -3,7 +3,25 @@ require '../includes/header.html';
 require '../includes/menuAdmin.php';
 include('../../conecta.php');
 
-//Pagina principal após o login
+if(isset($_POST['cadastrar'])){
+	$idCurso = $_POST['idCurso'];
+	$idSala = $_POST['idSala'];
+	$idTurma = $idCurso.'2014';
+	echo $idTurma;
+
+	for($i = 1; $i <= 10; $i++){
+		if($_POST[$i] != 'Selecione aqui'){
+			$p = explode(',',$_POST[$i]);
+			$sql = "INSERT INTO `Turma`(`idTurma`, `idPessoa`, `idDisciplina`, `idHorario`, `idSala`, `idCurso`) VALUES 
+			($idTurma,$p[0],$p[1],$p[2],$idSala,$idCurso)";
+			$result=mysql_query($sql);
+			if(!$result){
+				echo '<meta http-equiv="refresh" content="0;url=cadastroTurma.php">';
+				echo '<script>alert("'.mysql_error().'")</script>';
+			}
+		}
+	}
+}
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
