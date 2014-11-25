@@ -7,7 +7,6 @@ if(isset($_POST['cadastrar'])){
 	$idCurso = $_POST['idCurso'];
 	$idSala = $_POST['idSala'];
 	$idTurma = $idCurso.'2014';
-	echo $idTurma;
 
 	for($i = 1; $i <= 10; $i++){
 		if($_POST[$i] != 'Selecione aqui'){
@@ -43,22 +42,22 @@ if(isset($_POST['cadastrar'])){
 	              <th>Excluir</th>
 	            </thead>
 	           <tbody>
-    
-	            	<tr> <!--Alimenta Banco de Dados-->
-		                <td>1</td>
-		                <td>Sala - 1</td>
-		                <td>1 - Extensivo - Noturno 2014</td>
-		              	<td><p><a href="alterarTurma.php" class="btn btn-warning btn-xs">Alterar</a>
-		              	<td><p><a href="deletarTurma.php" class="btn btn-danger btn-xs">Excluir</a>
-		            </tr>
-	              
-	           		<tr>
-	           			<td>2</td>
-		                <td>Sala - 2</td>
-		                <td>2 - Intensivo - Matutino 2014</td>
-		              	<td><p><a href="alterarTurma.php" class="btn btn-warning btn-xs">Alterar</a>
-		              	<td><p><a href="deletarTurma.php" class="btn btn-danger btn-xs">Excluir</a>
-		            </tr>
+    				
+<?php
+    		$sql="SELECT * FROM Turma";
+            $result=mysql_query($sql);
+            while($row=mysql_fetch_array($result)){
+				echo '<tr>';
+				echo '<td>'.$row['idCurso'].'</td>';
+				echo '<td>Sala '. $row['idSala'].'</td>';
+				$q = "SELECT concat(`tipo`,' - ',`turno`,' ',year(`dtInicioInscricao`)) c FROM `Curso` where idCurso = {$row['idCurso']}";
+				$r = mysql_fetch_array(mysql_query($q));
+				echo '<td>'.$r['c'].'</td>';
+		        echo '<td><p><a href="alterarTurma.php?turma='.$row['idTurma'].'&pessoa='.$row['idPessoa'].'&disciplina='.$row['idDisciplina'].'&horario='.$row['idHorario'].'" class="btn btn-warning btn-xs">Alterar</a>';
+		        echo '<td><p><a href="deletarTurma.php?turma='.$row['idTurma'].'&pessoa='.$row['idPessoa'].'&disciplina='.$row['idDisciplina'].'&horario='.$row['idHorario'].'" class="btn btn-danger btn-xs">Excluir</a>';
+		        echo '</tr>'; 
+		    }         
+?>			              	 
            		</tbody>       
        		  </table>     
     		</div>

@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "root";
+$pass = "1234";
 
 $db   = "pbd";
 error_reporting(0);

@@ -58,7 +58,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option>
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option>
 <?php }
 ?>
       
@@ -79,7 +79,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>
@@ -98,7 +98,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>
@@ -117,7 +117,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>
@@ -136,7 +136,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>
@@ -155,7 +155,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>
@@ -174,7 +174,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>
@@ -193,7 +193,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>
@@ -212,7 +212,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>
@@ -231,7 +231,7 @@ include('../../conecta.php');
            $result=mysql_query($sql);
            while($row=mysql_fetch_array($result)){
 ?>
-              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['nome'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
+              <option value=<?php echo $row['idPessoa'].','.$row['idDisciplina'].','.$row['idHorario'];?>><?php echo $row['nome'].'; '.$row['nomeCompleto'].'; '.$row['horario'].'; '.$row['nomeDia']; ?></option><?php }
 ?>
             </select>
         </div>

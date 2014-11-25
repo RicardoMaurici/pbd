@@ -38,6 +38,18 @@ include('../../conecta.php');
             <input  name="vagasCurso" type="number" class="form-control" min=0 id="ivagas" placeholder="Nº vagas" required>
         </div>
       </div>
+          <div class="form-group">
+        <label for="lbdtiniins" class="col-sm-2 control-label">Início Inscrições</label>
+        <div class="col-sm-2">
+            <input name="inicioInscCurso" type="date" class="form-control" id="idtiniins" placeholder="dd/mm/AAAA">
+        </div>
+        <div class="col-sm-5">
+            <label for="lbdtterins" class="col-sm-2 control-label">Término Inscrições</label>
+            <div class="col-sm-5">
+              <input name="terminoInscCurso" type="date" class="form-control" id="idtterins" placeholder="dd/mm/AAAA">
+            </div>
+        </div>
+      </div>
       <div class="form-group">
         <label for="lbdtinimat" class="col-sm-2 control-label">Início Matrícula</label>
         <div class="col-sm-2">
@@ -50,18 +62,7 @@ include('../../conecta.php');
             </div>
         </div>
       </div>
-      <div class="form-group">
-        <label for="lbdtiniins" class="col-sm-2 control-label">Início Inscrições</label>
-        <div class="col-sm-2">
-            <input name="inicioInscCurso" type="date" class="form-control" id="idtiniins" placeholder="dd/mm/AAAA">
-        </div>
-        <div class="col-sm-5">
-            <label for="lbdtterins" class="col-sm-2 control-label">Término Inscrições</label>
-            <div class="col-sm-5">
-              <input name="terminoInscCurso" type="date" class="form-control" id="idtterins" placeholder="dd/mm/AAAA">
-            </div>
-        </div>
-      </div>
+  
       &nbsp&nbsp&nbsp&nbsp
       <div class="form-group">
         <div class="col-sm-2">
