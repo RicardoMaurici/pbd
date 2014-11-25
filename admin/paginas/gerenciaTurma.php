@@ -1,7 +1,27 @@
 <?php
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
-//Pagina principal após o login
+include('../../conecta.php');
+
+if(isset($_POST['cadastrar'])){
+	$idCurso = $_POST['idCurso'];
+	$idSala = $_POST['idSala'];
+	$idTurma = $idCurso.'2014';
+	echo $idTurma;
+
+	for($i = 1; $i <= 10; $i++){
+		if($_POST[$i] != 'Selecione aqui'){
+			$p = explode(',',$_POST[$i]);
+			$sql = "INSERT INTO `Turma`(`idTurma`, `idPessoa`, `idDisciplina`, `idHorario`, `idSala`, `idCurso`) VALUES 
+			($idTurma,$p[0],$p[1],$p[2],$idSala,$idCurso)";
+			$result=mysql_query($sql);
+			if(!$result){
+				echo '<meta http-equiv="refresh" content="0;url=cadastroTurma.php">';
+				echo '<script>alert("'.mysql_error().'")</script>';
+			}
+		}
+	}
+}
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
@@ -9,15 +29,6 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Gerenciar Turmas</h3>
   </div>
   <div class="panel-body">
-	<form class="form-inline" role="form">
-     	<div class="form-group">
-     		<input type="text" class="form-control" id="ibuscacurso" placeholder="Insira o idCurso desejado">
-  			<a href="gerenciaTurma.php" class="btn btn-primary">Buscar</a>
-  			<input type="text" class="form-control" id="ibuscaturma" placeholder="Insira o idTurma desejado">
-  			<a href="gerenciaTurma.php" class="btn btn-primary">Buscar</a>
-  		</div>
-  	</form>
-  	<hr />
   	<a href="cadastroTurma.php" class="btn btn-primary">Cadastrar</a>
   	<div class="row">    
    		<div class="col-md-12">
