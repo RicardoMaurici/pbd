@@ -1,4 +1,8 @@
- 
+<?php 
+include ('../conecta.php');
+session_start();
+header('Content-Type: text/html; charset=utf-8'); 
+?> 
 <!-- Menu com seus devidos links -->
 <nav id="navbar-example" class="navbar navbar-default navbar-static col-md-10 col-md-offset-1" role="navigation">
     <div class="container-fluid">
@@ -34,7 +38,13 @@
 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../index.php">Sair</a></li>
+            <?php 
+              $cpf=$_SESSION['login'];
+              $sql="SELECT nomeCompleto FROM candidato WHERE cpf=$cpf";
+              $temp=mysql_query($sql) or die(mysql_error());
+              $nome=mysql_fetch_array($temp);
+            ?>
+            <li><?php echo '<a href="../index.php">Sair  ['.$nome[0].'] </a>'?></li>
           </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container-fluid -->

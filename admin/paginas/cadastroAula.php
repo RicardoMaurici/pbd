@@ -35,7 +35,7 @@ require '../includes/menuAdmin.php';
           <div class="col-sm-3">
             <select class="form-control" id="hrSemana" name="hrSemana"> <!--infomacao vem do banco-->
               <?php
-                $sql="SELECT h.hrInicio as inicio, h.hrFim as fim, ds.nomeDia as nomeSem, h.idHorario as idH, ds.idDia idD FROM horario_dia hd INNER JOIN horario h ON hd.idHorario=h.idHorario INNER JOIN diasemana ds ON hd.idDia = ds.idDia order by idD asc";
+                $sql="SELECT DATE_FORMAT(h.hrInicio,'%H:%i') as inicio, DATE_FORMAT(h.hrFim,'%H:%i') as fim, ds.nomeDia as nomeSem, h.idHorario as idH, ds.idDia idD FROM horario_dia hd INNER JOIN horario h ON hd.idHorario=h.idHorario INNER JOIN diasemana ds ON hd.idDia = ds.idDia order by idD asc";
                 $result=mysql_query($sql);
                 if(!$result){
                   echo '<script>alert("'.mysql_error().'")</script>';

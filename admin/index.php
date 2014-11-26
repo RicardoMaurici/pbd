@@ -43,7 +43,7 @@ if(isset($_POST['login'])){
 			session_start();
 			$_SESSION['login']=$login;
 			$_SESSION['senha']=$senha;
-			header("Location:paginas/mainFuncionario.php");
+			header("Location:paginasFunc/mainFuncionario.php");
 		}
 	}
 	

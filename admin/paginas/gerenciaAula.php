@@ -52,7 +52,7 @@ require '../includes/menuAdmin.php';
 						}
 
 						//Pega horarios e dia Semana
-						$sqlhorario = "SELECT h.hrInicio as inicio, h.hrFim as fim, ds.nomeDia as semana 
+						$sqlhorario = "SELECT DATE_FORMAT(h.hrInicio,'%H:%i') as inicio, DATE_FORMAT(h.hrFim,'%H:%i') as fim, ds.nomeDia as semana 
 						FROM horario h INNER JOIN  horario_dia hd ON h.idHorario = hd.idHorario INNER JOIN diasemana ds 
 						ON hd.idDia = ds.idDia 
 						WHERE h.idHorario=".$row['idHorario'];

@@ -1,4 +1,5 @@
 <?php
+include ('../conecta.php');
 require '../includes/header.html';
 require '../includes/menuAluno.php';
 //Pagina principal após o login
@@ -12,45 +13,69 @@ require '../includes/menuAluno.php';
   	<div class="row">    
    		<div class="col-md-12">
 	        <div class="table-responsive">  
-		        	<!--APENAS MOSTRA CURSOS COM INSCRICOES ABERTAS-->
+		        <!--APENAS MOSTRA CURSOS COM INSCRICOES ABERTAS-->
+		       	<?php   
+              		$sql = "SELECT * FROM cursos_disponiveis";
+              		$busca = mysql_query($sql) or die(mysql_error());
+              		session_start();
+              		$cpf=$_SESSION['login'];
+                  $sqluser="SELECT idPessoa FROM candidato WHERE cpf=$cpf";
+                  $temp=mysql_query($sqluser) or die(mysql_error());
+                  $pessoa=mysql_fetch_array($temp);
+                  $idPessoa=$pessoa[0];
+              		$sqlCursosInsc = "SELECT i.idPessoa idP, i.idCurso idC FROM candidato u INNER JOIN inscricao i  ON i.idPessoa=u.idPessoa
+              		INNER JOIN curso c ON c.idCurso=i.idCurso WHERE i.idPessoa=$idPessoa";
+              		$result = mysql_query($sqlCursosInsc);
+              		if(!$result){
+              			echo '<meta http-equiv="refresh" content="0;url=mainAluno.php>';
+						        echo '<script>alert("'.mysql_error().'")</script>';
+              		}
+        		?> 
 	          <table id="mytable" class="table table-bordred table-striped">    
 	            <thead>
 	              <th>ID</th>
 	              <th>Tipo</th>
 	              <th>Turno</th>
 	              <th>Vagas</th>
-	              <th>Início Matrículas</th>
-	              <th>Término Matrículas</th>
 	              <th>Início Inscrições</th>
 	              <th>Término Inscrições</th>
+	              <th>Início Matrículas</th>
+	              <th>Término Matrículas</th>
 	              <th>Inscrição</th>
 	            </thead>
 	           <tbody>
-    
+    			<?php while ($row = mysql_fetch_array($busca)){
+              		$dtIinsc=date('d/m/Y',strtotime(str_replace('/', '-', $row['dtInicioInscricao'])));
+              		$dtFinsc=date('d/m/Y',strtotime(str_replace('/', '-', $row['dtFimInscricao'])));
+              		$dtImat=date('d/m/Y',strtotime(str_replace('/', '-', $row['dtInicioMatricula'])));
+              		$dtFmat=date('d/m/Y',strtotime(str_replace('/', '-', $row['dtFimMatricula'])));
+
+              		$inscrito=false;
+              			
+              		while ($linha = mysql_fetch_array($result)){
+              			if($row['idCurso']==$linha[1]){
+              				$inscrito=true;
+              				break;
+              			}
+              		}
+            	?>
 	            	<tr> <!--Alimenta Banco de Dados-->
-		                <td>1</td>
-		                <td>Extensivo</td>
-		                <td>Noturno</td>
-		                <td>80</td>
-		                <td>01/02/2014</td>
-		                <td>20/02/2014</td>
-		                <td>01/03/2014</td>
-		                <td>20/03/2014</td>
+		                <td><?php echo $row['idCurso'];?></td>
+		                <td><?php echo $row['tipo'];?></td>
+		                <td><?php echo $row['turno'];?></td>
+		                <td><?php echo $row['vagas'];?></td>
+		                <td><?php echo $dtIinsc;?></td>
+		                <td><?php echo $dtFinsc;?></td>
+		                <td><?php echo $dtImat;?></td>
+		                <td><?php echo $dtFmat;?></td>
 		                <!--Se ja esta inscrito desmarca botao-->
-		              	<td><p><a href="cadastraInscricao.php" class="btn btn-warning btn-xs">Quero me candidatar</a></td>
+		                <?php if($inscrito==true){ ?> 
+		              	<td><p><?php echo '<a disabled class="btn btn-warning btn-xs" href="cadastraInscricao.php?id='.$row['idCurso'].'">Quero me candidatar</a>';?></td>
+		            	<?php }else{ ?>
+		              	<td><p><?php echo '<a class="btn btn-warning btn-xs" href="cadastraInscricao.php?id='.$row['idCurso'].'">Quero me candidatar</a>';?></td>
+		            	<?php } ?>
 		            </tr>
-	              
-	           		<tr>
-	           			<td>2</td>
-		                <td>Intensivo</td>
-		                <td>Matutino</td>
-		                <td>75</td>
-		                <td>01/06/2014</td>
-		                <td>20/06/2014</td>
-		                <td>01/07/2014</td>
-		                <td>20/06/2014</td>
-		              	<td><p><a href="cadastraInscricao.php" class="btn btn-warning btn-xs" disabled>Quero me candidatar</a></td>
-		            </tr>
+		            <?php } ?>
            		</tbody>       
        		  </table>     
     		</div>

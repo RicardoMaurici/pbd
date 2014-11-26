@@ -5,15 +5,22 @@ require '../includes/header.html';
 ?>
 <script type="text/javascript">
   $(document).ready(function(){
+    $('#pais').change(function(){
+        $('#ufs').load('js/busca_uf.php?pais='+$('#pais').val() ); 
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
     $('#ufs').change(function(){
-        $('#cidade').load('busca_cidades.php?uf='+$('#ufs').val() ); 
+        $('#cidade').load('js/busca_cidades.php?uf='+$('#ufs').val() ); 
     });
   });
 </script>
 <script type="text/javascript">
   $(document).ready(function(){
     $('#cidade').change(function(){
-        $('#bairro').load('busca_bairros.php?cidade='+$('#cidade').val() ); 
+        $('#bairro').load('js/busca_bairros.php?cidade='+$('#cidade').val() ); 
     });
   });
 </script>
@@ -21,7 +28,7 @@ require '../includes/header.html';
 <script type="text/javascript">
   $(document).ready(function(){
     $('#bairro').change(function(){
-        $('#logradouro').load('busca_logradouros.php?bairro='+$('#bairro').val() ); 
+        $('#logradouro').load('js/busca_logradouros.php?bairro='+$('#bairro').val() ); 
     });
   });
 </script>
@@ -29,7 +36,7 @@ require '../includes/header.html';
 <script type="text/javascript">
   $(document).ready(function(){
     $('#logradouro').change(function(){
-        $('#endereco').load('busca_enderecos.php?logradouro='+$('#logradouro').val() ); 
+        $('#endereco').load('js/busca_enderecos.php?logradouro='+$('#logradouro').val() ); 
     });
   });
 </script>
@@ -39,17 +46,17 @@ require '../includes/header.html';
     <h3 class="panel-title">Cadastro de Candidato</h3>
   </div>
   <div class="panel-body">
-  	<form class="form-horizontal" role="form" method="post" action="../bd/cad_candidato.php">
+  	<form class="form-horizontal" role="form" method="post" action="bd/cad_candidato.php">
   		<div class="form-group">
     		<label for="lbnomeCompleto" class="col-sm-2 control-label">Nome Completo</label>
     		<div class="col-sm-4">
-      			<input type="text" class="form-control" id="inomeCompleto" name="inomeCompleto" placeholder="Informe o nome completo">
+      			<input type="text" class="form-control" required id="inomeCompleto" name="inomeCompleto" placeholder="Informe o nome completo">
     		</div>
     	</div>
     	<div class="form-group">
     		<label for="lbcpf" class="col-sm-2 control-label">CPF</label>
     		<div class="col-sm-2">
-      			<input type="number" class="form-control" id="icpf" name="icpf" placeholder="Informe o CPF">
+      			<input type="number" class="form-control" required id="icpf" name="icpf" placeholder="Informe o CPF">
     		</div>
     		<div class="col-sm-3">
       			<label for="lbrg" class="col-sm-2 control-label">RG</label>
@@ -109,7 +116,7 @@ require '../includes/header.html';
       <div class="form-group">
         <label for="lbpais" class="col-sm-2 control-label">País</label>
           <div class="col-sm-2">
-            <select class="form-control"  name="pais" id="slpais"> <!--infomacao vem do banco-->
+            <select class="form-control"  name="pais" id="pais"> <!--infomacao vem do banco-->
             <?php
               $sql="SELECT*FROM pais";
               $result=mysql_query($sql);
@@ -123,13 +130,7 @@ require '../includes/header.html';
             <label for="lbuf" class="col-sm-2 control-label">UF</label>
             <div class="col-sm-4">
               <select class="form-control"  id="ufs" name="ufs"><!--infomacao vem do banco-->
-            <?php
-              $sql="SELECT*FROM uf";
-              $result=mysql_query($sql);
-              while($row=mysql_fetch_array($result)){
-            ?>
-                <option value=<?php echo $row[0];?>><?php echo $row[1]; ?></option>
-                <?php } ?>
+                <option value="0" >Selecione a UF</option>
               </select>
             </div>
         </div>
@@ -176,7 +177,7 @@ require '../includes/header.html';
       <div class="form-group">
         <label for="lbsenha" class="col-sm-2 control-label">Senha</label>
         <div class="col-sm-2">
-            <input type="password" class="form-control" id="isenha" name="isenha" placeholder="Senha">
+            <input type="password" class="form-control" required id="isenha" name="isenha" placeholder="Senha">
         </div>
       </div>
       &nbsp&nbsp&nbsp&nbsp
