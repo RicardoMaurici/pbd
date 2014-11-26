@@ -13,7 +13,6 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$sexo=$_POST['slsexo'];
 		$tel1=$_POST['itel1'];
 		$tel2=$_POST['itel2'];
-		$tel3=$_POST['itel3'];
 		$escolaridade=$_POST['slescolaridade'];
 		$eleitor=$_POST['ieleitor'];
 		$pais=$_POST['pais'];
@@ -21,15 +20,16 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$cidade=$_POST['cidade'];
 		$bairro=$_POST['bairro'];
 		$endereco=$_POST['endereco'];
+		$complemento=$_POST['icomplemento'];
 		$email=$_POST['iemail'];
 		$senha=$_POST['isenha'];
 
 		if($endereco!=0){
-		$sql="INSERT INTO candidato (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, tituloEleitor, idEndereco, idEscolaridade, dtCadastro)
-		VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$eleitor', '$endereco','$escolaridade', CURDATE())";
+		$sql="INSERT INTO candidato (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, telefone1, telefone2, tituloEleitor, complemento, idEndereco, idEscolaridade, dtCadastro)
+		VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo','$tel1','$tel2', '$eleitor', '$complemento', '$endereco','$escolaridade', CURDATE())";
 		}else{
-			$sql="INSERT INTO candidato (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, tituloEleitor, idEscolaridade, dtCadastro)
-		VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$eleitor', '$escolaridade', CURDATE())";
+			$sql="INSERT INTO candidato (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, telefone1, telefone2, tituloEleitor, complemento, idEscolaridade, dtCadastro)
+		VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$tel1','$tel2', '$eleitor', '$complemento', '$escolaridade', CURDATE())";
 		}
 
 		$result=mysql_query($sql);

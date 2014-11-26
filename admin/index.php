@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
 			session_start();
 			$_SESSION['login']=$login;
 			$_SESSION['senha']=$senha;
-			header("Location:paginas/mainProfessor.php");	
+			header("Location:paginasProf/mainProfessor.php");	
 		}
 	}else{
 		$temp=mysql_fetch_array($result);

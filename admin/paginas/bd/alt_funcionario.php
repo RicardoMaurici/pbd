@@ -15,7 +15,6 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$sexo=$_POST['slsexo'];
 		$tel1=$_POST['itel1'];
 		$tel2=$_POST['itel2'];
-		$tel3=$_POST['itel3'];
 		$pis=$_POST['ipispasep'];
 		$salario=$_POST['isalario'];
 		$escolaridade=$_POST['slescolaridade'];
@@ -37,10 +36,10 @@ if(getenv("REQUEST_METHOD")!="POST"){
 
 		if($salario>0){
 		if($endereco!=0){
-			$sql="UPDATE funcionario SET CPF='$cpf',RG='$rg', nomeCompleto='$nomecompleto', email='$email', dtNascimento='$dtNascimento', senha='$senha', sexo='$sexo', salario='$salario', PISPASEP='$pis', nomeUsuario='$login', privilegio='$admin', complemento='$complemento', idFuncao='$cargo', idEndereco='$endereco', idEscolaridade='$escolaridade'
+			$sql="UPDATE funcionario SET CPF='$cpf',RG='$rg', nomeCompleto='$nomecompleto', email='$email', dtNascimento='$dtNascimento', senha='$senha', sexo='$sexo', salario='$salario', PISPASEP='$pis', nomeUsuario='$login', privilegio='$admin', complemento='$complemento', idFuncao='$cargo', idEndereco='$endereco', idEscolaridade='$escolaridade', telefone1='$tel1', telefone2='$tel2'
 			WHERE idPessoa='$idF'";
 		}else{
-			$sql="UPDATE funcionario SET CPF='$cpf',RG='$rg', nomeCompleto='$nomecompleto', email='$email', dtNascimento='$dtNascimento', senha='$senha', sexo='$sexo', salario='$salario', PISPASEP='$pis', nomeUsuario='$login', privilegio='$admin', complemento='$complemento', idFuncao='$cargo', idEndereco=NULL, idEscolaridade='$escolaridade'
+			$sql="UPDATE funcionario SET CPF='$cpf',RG='$rg', nomeCompleto='$nomecompleto', email='$email', dtNascimento='$dtNascimento', senha='$senha', sexo='$sexo', salario='$salario', PISPASEP='$pis', nomeUsuario='$login', privilegio='$admin', complemento='$complemento', idFuncao='$cargo', idEndereco=NULL, idEscolaridade='$escolaridade', telefone1='$tel1', telefone2='$tel2'
 			WHERE idPessoa='$idF'";
 		}
 		

@@ -97,13 +97,10 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <label for="lbtel1" class="col-sm-2 control-label">Telefone</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="itel1" name="itel1" placeholder="Residêncial">
+            <input type="text" class="form-control" id="itel1" name="itel1" placeholder="Residêncial" value="<?php echo "$resultp[telefone1]"?>">
         </div>
-        <div class="col-sm-1">
-            <input type="text" class="form-control" id="itel2" name="itel2" placeholder="Celular">
-        </div>
-        <div class="col-sm-1">
-            <input type="text" class="form-control" id="itel3" name="itel3" placeholder="Outro">
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="itel2" name="itel2" placeholder="Celular" value="<?php echo "$resultp[telefone2]"?>">
         </div>
       </div>
       <div class="form-group">

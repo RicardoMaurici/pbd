@@ -28,8 +28,8 @@ if(getenv("REQUEST_METHOD")!="POST"){
 			}
 		}
 		if($existe==false){
-			$sql="INSERT INTO aula (idPessoa,idDisciplina, idHorario)
-			VALUES ('$idP', '$idD', '$idH')";
+			//$sql="INSERT INTO aula (idPessoa,idDisciplina, idHorario)
+			//VALUES ('$idP', '$idD', '$idH')";
 
 			$sql="UPDATE aula SET idPessoa='$idP', idDisciplina='$idD', idHorario='$idH' 
 			WHERE idDisciplina='$idDI' and idPessoa='$idPI' and idHorario='$idHI'";

@@ -14,7 +14,6 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$sexo=$_POST['slsexo'];
 		$tel1=$_POST['itel1'];
 		$tel2=$_POST['itel2'];
-		$tel3=$_POST['itel3'];
 		$pis=$_POST['ipispasep'];
 		$salario=$_POST['isalario'];
 		$escolaridade=$_POST['slescolaridade'];
@@ -36,13 +35,13 @@ if(getenv("REQUEST_METHOD")!="POST"){
 
 		if($salario>0){
 		if($endereco!=0){
-			$sql="INSERT INTO funcionario (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, salario, PISPASEP,
+			$sql="INSERT INTO funcionario (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, telefone1, telefone2, salario, PISPASEP,
 			nomeUsuario, privilegio, complemento, idFuncao, idEndereco, idEscolaridade)
-			VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$salario', '$pis', '$login', '$admin', '$complemento', '$cargo', '$endereco','$escolaridade')";
+			VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo','$tel1','$tel2', '$salario', '$pis', '$login', '$admin', '$complemento', '$cargo', '$endereco','$escolaridade')";
 		}else{
-			$sql="INSERT INTO funcionario (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, salario, PISPASEP,
+			$sql="INSERT INTO funcionario (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, telefone1, telefone2, salario, PISPASEP,
 			nomeUsuario, privilegio, complemento, idFuncao, idEscolaridade)
-			VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$salario', '$pis', '$login', '$admin', '$complemento', '$cargo', '$escolaridade')";
+			VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$tel1','$tel2','$salario', '$pis', '$login', '$admin', '$complemento', '$cargo', '$escolaridade')";
 		}
 		
 		$result=mysql_query($sql);

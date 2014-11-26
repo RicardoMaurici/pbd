@@ -32,6 +32,7 @@ require 'includes/headerInicio.html';
 ?>
 
 <div class="container">
+	<a href="admin/index.php" class="label label-success" style="margin-left:1000px;" id="restrito">Acesso Restrito</a>
 	<!-- Login para area de admin, funcionarios ou professores -->
 	<div class="row">
 		<div class="col-md-3 col-md-offset-4">

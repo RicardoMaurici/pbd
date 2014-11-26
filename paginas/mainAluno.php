@@ -7,7 +7,7 @@ require '../includes/menuAluno.php';
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
-    <h3 class="panel-title">Bem vindo <?php $login?>Página principal - Cursos Abertos</h3>
+    <h3 class="panel-title">BEM VINDO - Cursos Abertos</h3>
   </div>
   <div class="panel-body">
   	<div class="row">    

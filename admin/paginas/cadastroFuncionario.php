@@ -91,11 +91,8 @@ require '../includes/menuAdmin.php';
         <div class="col-sm-2">
             <input type="text" class="form-control" id="itel1" name="itel1" placeholder="Residêncial">
         </div>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
             <input type="text" class="form-control" id="itel2" name="itel2" placeholder="Celular">
-        </div>
-        <div class="col-sm-1">
-            <input type="text" class="form-control" id="itel3" name="itel3" placeholder="Outro">
         </div>
       </div>
       <div class="form-group">

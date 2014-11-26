@@ -13,7 +13,6 @@ if(getenv("REQUEST_METHOD")!="POST"){
 		$sexo=$_POST['slsexo'];
 		$tel1=$_POST['itel1'];
 		$tel2=$_POST['itel2'];
-		$tel3=$_POST['itel3'];
 		$pis=$_POST['ipispasep'];
 		$salario=$_POST['isalario'];
 		$escolaridade=$_POST['slescolaridade'];
@@ -31,13 +30,13 @@ if(getenv("REQUEST_METHOD")!="POST"){
 
 		if($salario>0){
 		if($endereco!=0){
-			$sql="INSERT INTO professor (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, salario, PISPASEP,
+			$sql="INSERT INTO professor (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, telefone1, telefone2, salario, PISPASEP,
 			nomeUsuario, complemento, idEndereco, idEscolaridade)
-			VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$salario', '$pis', '$login', '$complemento', '$endereco','$escolaridade')";
+			VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo','$tel1','$tel2', '$salario', '$pis', '$login', '$complemento', '$endereco','$escolaridade')";
 		}else{
-			$sql="INSERT INTO professor (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, salario, PISPASEP,
+			$sql="INSERT INTO professor (CPF,RG, nomeCompleto, email, dtNascimento, senha, sexo, telefone1, telefone2, salario, PISPASEP,
 			nomeUsuario, complemento, idEscolaridade)
-			VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo', '$salario', '$pis', '$login', '$complemento', '$escolaridade')";
+			VALUES ('$cpf', '$rg', '$nomecompleto', '$email', '$dtNascimento', '$senha', '$sexo','$tel1','$tel2', '$salario', '$pis', '$login', '$complemento', '$escolaridade')";
 		}
 		
 		$result=mysql_query($sql);
