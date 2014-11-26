@@ -1,7 +1,8 @@
 <?php
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
-//Pagina principal após o login
+include('../../conecta.php');
+
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
@@ -9,15 +10,7 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Registro de Recebimento de Documento do Aluno</h3>
   </div>
   <div class="panel-body">
-	<form class="form-inline" role="form">
-     	<div class="form-group">
-     		<input type="text" class="form-control" id="ibuscaAluno" placeholder="Insira a matrícula desejada">
-  			<a href="recebimentoDocumentoAluno.php" class="btn btn-primary">Buscar</a>
-  			<input type="text" class="form-control" id="ibuscaDocumento" placeholder="Insira o documento desejado">
-  			<a href="recebimentoDocumentoAluno.php" class="btn btn-primary">Buscar</a>
-  		</div>
-  	</form>
-  	<hr />
+
   	<div class="row">    
    		<div class="col-md-12">
 	        <div class="table-responsive">  
@@ -34,24 +27,33 @@ require '../includes/menuAdmin.php';
 	              <th>Entregue</th>
 	            </thead>
 	           <tbody>
-    
+<?php 
+	$sql = "SELECT c.`nomeCompleto` nomeCandidato,c.`CPF` cpf,i.`idMatricula` idMatricula FROM `Candidato` c join `Inscricao` i on c.`idPessoa` = i.`idPessoa`";
+	$result=mysql_query($sql);
+    while($row=mysql_fetch_array($result)){
+    	if($row['idMatricula'] > 0){
+    		$idM = $row['idMatricula'];
+    		$query = "SELECT matRecebido FROM `Matricula` WHERE `idMatricula` = $idM AND `desistente` IS NULL ";
+    		$rquery = mysql_query($query);
+    		$x = mysql_fetch_array($rquery);
+    		if($x[0]){
+    			$recebido = 'checked="checked"';
+   				$botao = 'disabled="disabled"';
+   			}
+?>    	
 	            	<tr> <!--Alimenta Banco de Dados/Se já recebeu desmarca botão-->
-		                <td><input type="checkbox" class="checkthis" disabled="disabled" checked="checked" /></td>
-		                <td>111</td>
-		                <td>Joaquim</td>
-		                <td>111.111.111-11</td>
+		                <td><input type="checkbox" class="checkthis" disabled="disabled" <?php echo $recebido; ?> /></td>
+		                <td><?php echo $row['idMatricula']; ?></td>
+		                <td><?php echo $row['nomeCandidato']; ?></td>
+		                <td><?php echo $row['cpf']; ?></td>
 		                <td>Comprovante de residência</td>
-		              	<td><p><a href="registroEntregaMaterialAluno.php" class="btn btn-warning btn-xs" disabled="disabled">Sim</a><a href="registroEntregaMaterialAluno.php" class="btn btn-danger btn-xs" style="margin-left:20px;"disabled="disabled">Sim Para Todos</a></p></td>
+		              	<td><p><a href="registroEntregaMaterialAluno.php" class="btn btn-warning btn-xs" <?php echo $botao; ?>>Sim</a></p></td>
 		            </tr>
-	              
-	           		<tr>
-		                <td><input type="checkbox" class="checkthis" disabled="disabled" /></td>
-		                <td>222</td>
-		                <td>Joaquina</td>
-		                <td>222.222.222-22</td>
-		                <td>Cópia Identidade</td>
-		                <td><p><a href="registroEntregaMaterialAluno.php" class="btn btn-warning btn-xs">Sim</a><a href="registroEntregaMaterialAluno.php" class="btn btn-danger btn-xs" style="margin-left:20px;">Sim Para Todos</a></p></td>
-		            </tr>
+<?php
+		}
+
+	}
+?>
            		</tbody>       
        		  </table>     
     		</div>

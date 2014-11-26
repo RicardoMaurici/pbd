@@ -48,18 +48,7 @@ if(isset($_GET['curso'])){
 " placeholder="Nº vagas">
         </div>
       </div>
-      <div class="form-group">
-        <label for="lbdtinimat" class="col-sm-2 control-label">Início Matrícula</label>
-        <div class="col-sm-2">
-            <input name="inicioMatCurso" type="date" class="form-control" id="idtinimat" value="<?php echo $row['dtInicioMatricula']; ?>" placeholder="Início Matrícula">
-        </div>
-        <div class="col-sm-5">
-            <label for="lbdttermat" class="col-sm-2 control-label">Término Matrícula</label>
-            <div class="col-sm-5">
-              <input name="terminoMatCurso" type="date" class="form-control" id="idttermat" value="<?php echo $row['dtFimMatricula']; ?>" placeholder="Término Matrícula">
-            </div>
-        </div>
-      </div>
+   
       <div class="form-group">
         <label for="lbdtiniins" class="col-sm-2 control-label">Início Inscrições</label>
         <div class="col-sm-2">
@@ -70,6 +59,18 @@ if(isset($_GET['curso'])){
             <div class="col-sm-5">
               <input name="terminoInscCurso" type="date" class="form-control" id="idtterins" value="<?php echo $row['dtFimInscricao']; ?>
 " placeholder="Término Inscrições">
+            </div>
+        </div>
+      </div>
+         <div class="form-group">
+        <label for="lbdtinimat" class="col-sm-2 control-label">Início Matrícula</label>
+        <div class="col-sm-2">
+            <input name="inicioMatCurso" type="date" class="form-control" id="idtinimat" value="<?php echo $row['dtInicioMatricula']; ?>" placeholder="Início Matrícula">
+        </div>
+        <div class="col-sm-5">
+            <label for="lbdttermat" class="col-sm-2 control-label">Término Matrícula</label>
+            <div class="col-sm-5">
+              <input name="terminoMatCurso" type="date" class="form-control" id="idttermat" value="<?php echo $row['dtFimMatricula']; ?>" placeholder="Término Matrícula">
             </div>
         </div>
       </div>
