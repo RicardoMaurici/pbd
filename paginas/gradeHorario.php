@@ -7,10 +7,12 @@ $idAluno = $_SESSION['idAluno'];
 
 $sql = "SELECT idCurso FROM Inscricao i JOIN Matricula m ON i.idMatricula = m.idMatricula AND m.matRecebido = 1 WHERE i.idPessoa = $idAluno";
 $busca = mysql_query($sql) or die(mysql_error());
+
 $idCurso = mysql_fetch_row($busca);
 
 $query = "SELECT * FROM grade_aulas_aluno where idCurso = $idCurso[0]";
-$search = mysql_query($query) or die(mysql_error());
+$search = mysql_query($query);
+
 
 ?>
 
@@ -21,7 +23,11 @@ $search = mysql_query($query) or die(mysql_error());
   <div class="panel-body">
 	<div class="row">    
    		<div class="col-md-12">
-	        <div class="table-responsive">  
+	        <div class="table-responsive"> 
+	        <?php
+	        if(!$search){
+				?><h2 style="text-align:center;">Ainda não há Grade de Horários disponível</h2><?php
+			}?> 
 	          <table id="mytable" class="table table-bordred table-striped">    
 	            <thead>
 	              <th>Turma</th>

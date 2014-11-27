@@ -81,7 +81,7 @@ include('../../conecta.php');
 		                <?php }else{ ?>
 		                <td><input type="checkbox" class="checkthis" disabled="disabled" checked="checked"/></td>
 		                <?php } ?>
-		              	<td><p><a href="detalheCadastroAluno.php" class="btn btn-primary btn-xs">Cadastro Aluno</a>
+		                <td><p><?php echo '<a href="detalheCadastroAluno.php?id='.$row['Pessoa'].'" class="btn btn-primary btn-xs"">Cadastro Aluno</a>';?></p></td>
 		              	<td><p><a href="alterarCadastroAluno.php" class="btn btn-warning btn-xs">Alterar</a>
 		              	<td><p><a href="deletarCadastroAluno.php" class="btn btn-danger btn-xs">Excluir</a>
 		            </tr>

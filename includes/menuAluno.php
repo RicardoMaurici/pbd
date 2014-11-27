@@ -33,6 +33,13 @@ header('Content-Type: text/html; charset=utf-8');
             </li>
 
             <li class="dropdown">
+              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Relatório<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="inscricoesAluno.php">Minhas Inscrições</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
               <a id="drop2" role="button" class="dropdown-toggle" href="meuCadastro.php">Meu Cadastro</a>
             </li>
 

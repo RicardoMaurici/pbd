@@ -1,41 +1,46 @@
 <?php
-include ('../../conecta.php');
+include ('../conecta_aluno.php');
 require '../includes/header.html';
-require '../includes/menuAdmin.php';
+require '../includes/menuAluno.php';
 //Pagina principal após o login
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
   <div class="panel-heading">
-    <h3 class="panel-title">Detalhes Cadastro de Aluno</h3>
+    <h3 class="panel-title">Meu Cadastro</h3>
   </div>
   <div class="panel-body">
     <?php 
-                  $idPessoa=$_GET['id'];
+                  session_start();
+                  $cpf=$_SESSION['login'];
+                  $sqluser="SELECT idPessoa FROM candidato WHERE cpf=$cpf";
+                  $temp=mysql_query($sqluser) or die(mysql_error());
+                  $pessoa=mysql_fetch_array($temp);
+                  $idPessoa=$pessoa[0];
 
                   $sql="SELECT * FROM candidato WHERE idPessoa='$idPessoa'";
                   $result=mysql_query($sql) or die (mysql_error());
                   $info=mysql_fetch_array($result);
     ?>
-    <form class="form-horizontal" role="form">
-      <div class="form-group">
-        <label for="lbnomeCompleto" class="col-sm-2 control-label">Nome Completo</label>
-        <div class="col-sm-4">
-            <input type="text" class="form-control" id="inomeCompleto" disabled placeholder="Informe o nome completo" value="<?php echo "$info[nomeCompleto]"?>">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="lbcpf" class="col-sm-2 control-label">CPF</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="icpf" disabled placeholder="Informe o CPF" value="<?php echo "$info[CPF]"?>">
-        </div>
-        <div class="col-sm-3">
-            <label for="lbrg" class="col-sm-2 control-label">RG</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="irg" disabled placeholder="RG" value="<?php echo "$info[RG]"?>">
-            </div>
-        </div>
-      </div>
+  	<form class="form-horizontal" role="form">
+  		<div class="form-group">
+    		<label for="lbnomeCompleto" class="col-sm-2 control-label">Nome Completo</label>
+    		<div class="col-sm-4">
+      			<input type="text" class="form-control" id="inomeCompleto" disabled placeholder="Informe o nome completo" value="<?php echo "$info[nomeCompleto]"?>">
+    		</div>
+    	</div>
+    	<div class="form-group">
+    		<label for="lbcpf" class="col-sm-2 control-label">CPF</label>
+    		<div class="col-sm-2">
+      			<input type="text" class="form-control" id="icpf" disabled placeholder="Informe o CPF" value="<?php echo "$info[CPF]"?>">
+    		</div>
+    		<div class="col-sm-3">
+      			<label for="lbrg" class="col-sm-2 control-label">RG</label>
+      			<div class="col-sm-6">
+      				<input type="text" class="form-control" id="irg" disabled placeholder="RG" value="<?php echo "$info[RG]"?>">
+    			  </div>
+    		</div>
+    	</div>
       <div class="form-group">
         <label for="lbdtNascimento" class="col-sm-2 control-label">Data Nascimento</label>
         <div class="col-sm-2">
@@ -152,7 +157,7 @@ require '../includes/menuAdmin.php';
         </div>
       <a href="alteraCadastroAluno.php" class="btn btn-warning" style="width: 25%;" id="retornaCunsultaGeral">Quero alterar</a>
     </div>
-  </form>
+	</form>
   </div>
   </div>  
  
