@@ -1,11 +1,11 @@
 <?php
-include ('../../conecta_aluno.php');
+include ('../conecta_aluno.php');
 require '../includes/header.html';
 require '../includes/menuAluno.php';
 
 $idAluno = $_SESSION['idAluno'];
 
-$sql = "SELECT `idCurso` FROM `Inscricao` i JOIN Matricula m ON i.idMatricula = m.idMatricula AND m.`matRecebido` = 1 WHERE i.`idPessoa` = $idAluno";
+$sql = "SELECT idCurso FROM Inscricao i JOIN Matricula m ON i.idMatricula = m.idMatricula AND m.matRecebido = 1 WHERE i.idPessoa = $idAluno";
 $busca = mysql_query($sql) or die(mysql_error());
 $idCurso = mysql_fetch_row($busca);
 
@@ -37,6 +37,7 @@ $search = mysql_query($query) or die(mysql_error());
 	            	<tr> 
 <?php
 				while ($row = mysql_fetch_array($search)){
+					?> </tr> <?php
 		        	echo '<th>'.$row['idTurma'].'</th>';
 		            echo '<th>'.$row['nomeCompleto'].'</th>';
 		            echo '<th>'.$row['nome'].'</th>';
@@ -44,7 +45,9 @@ $search = mysql_query($query) or die(mysql_error());
 		            echo '<th>'.$row['hrFim'].'</th>';
 		            echo '<th>'.$row['idSala'].'</th>';
 		            echo '<th>'.$row['nomeDia'].'</th>';
-		        }        
+		        ?> </tr>
+		        <?php }   
+
 ?>
 		            </tr>
 

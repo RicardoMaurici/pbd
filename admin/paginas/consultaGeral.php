@@ -1,6 +1,7 @@
 <?php
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
+include('../../conecta.php');
 //Pagina principal após o login
 ?>
 
@@ -9,14 +10,15 @@ require '../includes/menuAdmin.php';
     <h3 class="panel-title">Consulta Geral</h3>
   </div>
   <div class="panel-body">
-	<form class="form-inline" role="form">
+	<form class="form-inline" role="form" method="post" action="consultaGeral.php">
      	<div class="form-group">
-     		<input type="text" class="form-control" id="ibuscacurso" placeholder="Insira o idCurso desejado">
-  			<a href="consultaGeral.php" class="btn btn-primary">Buscar</a>
-  			<input type="text" class="form-control" id="ibuscamatricula" placeholder="Insira a matrícula desejada">
-  			<a href="recebimentoDocumentoAluno.php" class="btn btn-primary">Buscar</a>
-  			<input type="text" class="form-control" id="ibuscainscricao" placeholder="Insira a inscrição desejada">
-  			<a href="recebimentoDocumentoAluno.php" class="btn btn-primary">Buscar</a>
+     		<input type="number" class="form-control" id="ibuscacurso" name="ibuscacurso" placeholder="Insira o idCurso desejado">
+     		<input type="submit" class="btn btn-primary"  id="buscaCurso" name="buscaCurso" value="Buscar">
+  			<input type="number" class="form-control" id="ibuscamatricula" name="ibuscamatricula" placeholder="Insira a matrícula desejada">
+  			<input type="submit" class="btn btn-primary"  id="buscaMatricula" name="buscaMatricula" value="Buscar">
+  			<input type="number" class="form-control" id="ibuscainscricao" name="ibuscainscricao" placeholder="Insira a inscrição desejada">
+  			<input type="submit" class="btn btn-primary"  id="buscaInscricao" name="buscaInscricao" value="Buscar">
+  			<input type="submit" class="btn btn-primary" id="normal" name="normal" value="Normal">
   		</div>
   	</form>
   	<hr />
@@ -26,6 +28,27 @@ require '../includes/menuAdmin.php';
 		        	<!--Se fizer busca traz as tuplas que satisfazem a condição-->
 		        	<!--Os documentos são iguais para todos os tipos de curso-->
 		        	<!--Não precisa Incluir, pois todos alunos precisam entregar documentos-->
+		        <?php
+		        	if($_POST['normal']){
+		        		$sql = "SELECT * FROM alunos_matriculados";
+						$busca = mysql_query($sql) or die(mysql_error());
+					}else if($_POST['buscaCurso']){
+		        		$idCurso=$_POST['ibuscacurso'];
+		        		$sql = "SELECT * FROM alunos_matriculados WHERE curso='$idCurso'";
+						$busca = mysql_query($sql) or die(mysql_error());
+					}else if($_POST['buscaMatricula']){
+		        		$idMat=$_POST['ibuscamatricula'];
+		        		$sql = "SELECT * FROM alunos_matriculados WHERE matricula='$idMat'";
+						$busca = mysql_query($sql) or die(mysql_error());
+					}else if($_POST['buscaInscricao']){
+		        		$idIns=$_POST['ibuscainscricao'];
+		        		$sql = "SELECT * FROM alunos_matriculados WHERE inscricao='$idIns'";
+						$busca = mysql_query($sql) or die(mysql_error());
+		        	}else{
+		        		$sql = "SELECT * FROM alunos_matriculados";
+						$busca = mysql_query($sql) or die(mysql_error());
+					}
+				?> 
 	          <table id="mytable" class="table table-bordred table-striped">    
 	            <thead>
 	              <th>Inscrição</th>
@@ -40,32 +63,29 @@ require '../includes/menuAdmin.php';
 	              <th>Excluir</th>
 	            </thead>
 	           <tbody>
-    
+    				<?php while ($row = mysql_fetch_array($busca))
+            		{ ?>
 	            	<tr> <!--Alimenta Banco de Dados/Se já recebeu desmarca botão-->
-		                <td>111</td>
-		                <td>111</td>
-		                <td>Joaquim</td>
-		                <td>111.111.111-11</td>
-		                <td>1 - Extensivo - Noturno 2014</td>
+		                <td><?php echo $row['Inscricao'];?></td>
+		                <td><?php echo $row['Matricula'];?></td>
+		                <td><?php echo $row['Nome'];?></td>
+		                <td><?php echo $row['CPF'];?></td>
+		                <td><?php echo $row['Curso'].' - '.$row['tipo']. ' - '.$row['turno'];?></td>
+		                <?php if($row['matRecebido']==1){ ?>
 		                <td><input type="checkbox" class="checkthis" disabled="disabled" checked="checked"/></td>
+		                <?php }else{ ?>
+		                <td><input type="checkbox" class="checkthis" disabled="disabled"/></td>
+		                <?php } ?>
+		                <?php if($row['dtMatricula']==NULL){ ?>
 		                <td><input type="checkbox" class="checkthis" disabled="disabled" /></td>
+		                <?php }else{ ?>
+		                <td><input type="checkbox" class="checkthis" disabled="disabled" checked="checked"/></td>
+		                <?php } ?>
 		              	<td><p><a href="detalheCadastroAluno.php" class="btn btn-primary btn-xs">Cadastro Aluno</a>
 		              	<td><p><a href="alterarCadastroAluno.php" class="btn btn-warning btn-xs">Alterar</a>
 		              	<td><p><a href="deletarCadastroAluno.php" class="btn btn-danger btn-xs">Excluir</a>
 		            </tr>
-	              
-	           		<tr>
-	           			<td>222</td>
-		                <td>222</td>
-		                <td>Joaquina</td>
-		                <td>222.222.222-22</td>
-		                <td>2 - Intensivo - Matutino 2014</td>
-		                <td><input type="checkbox" class="checkthis" disabled="disabled" /></td>
-		                <td><input type="checkbox" class="checkthis" disabled="disabled" checked="checked"/></td>
-		                <td><p><a href="detalheCadastroAluno.php" class="btn btn-primary btn-xs">Cadastro Aluno</a>
-		              	<td><p><a href="alterarCadastroAluno.php" class="btn btn-warning btn-xs">Alterar</a>
-		              	<td><p><a href="deletarCadastroAluno.php" class="btn btn-danger btn-xs">Excluir</a>
-		            </tr>
+	              <?php } ?>
            		</tbody>       
        		  </table>     
     		</div>

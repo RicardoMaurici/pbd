@@ -3,6 +3,8 @@ include('../../../conecta.php');
 
 	$idP=$_GET['id'];
 		
+	$sqlAP="DELETE FROM areas_professor WHERE idPessoa='$idP'";
+	$resultAP=mysql_query($sqlAP) or die (mysql_error());
 	$sql="DELETE FROM professor WHERE idPessoa='$idP'";
 		
 	$result=mysql_query($sql);
