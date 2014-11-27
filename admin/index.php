@@ -52,6 +52,7 @@ require 'includes/header.html';
 ?>
 
 <div class="container">
+	<a href="../index.php" class="label label-success" style="margin-left:1000px;" id="restrito">Acesso Geral</a>
 	<!-- Login para area de admin, funcionarios ou professores -->
 	<div class="row">
 		<div class="col-md-3 col-md-offset-4">

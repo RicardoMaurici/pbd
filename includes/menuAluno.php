@@ -13,7 +13,7 @@ header('Content-Type: text/html; charset=utf-8');
           <ul class="nav navbar-nav">
             
             <li class="dropdown">
-              <a id="drop1" role="button" class="dropdown-toggle" href="gerenciaMinhasInscricoes.php" >Inscrições</a>
+              <a id="drop1" role="button" class="dropdown-toggle" href="gerenciaMinhasInscricoes.php" >Fazer Matrícula</a>
             </li>
 
             <li class="dropdown">

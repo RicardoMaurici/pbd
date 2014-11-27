@@ -24,7 +24,7 @@ require '../includes/menuAluno.php';
                   $pessoa=mysql_fetch_array($temp);
                   $idPessoa=$pessoa[0];
               		$sqlCursosInsc = "SELECT i.idPessoa idP, i.idCurso idC FROM candidato u INNER JOIN inscricao i  ON i.idPessoa=u.idPessoa
-              		INNER JOIN curso c ON c.idCurso=i.idCurso WHERE i.idPessoa=$idPessoa";
+              		INNER JOIN curso c ON c.idCurso=i.idCurso WHERE i.idPessoa=$idPessoa ORDER BY idC";
               		$result = mysql_query($sqlCursosInsc);
               		if(!$result){
               			echo '<meta http-equiv="refresh" content="0;url=mainAluno.php>';
@@ -51,7 +51,8 @@ require '../includes/menuAluno.php';
               		$dtFmat=date('d/m/Y',strtotime(str_replace('/', '-', $row['dtFimMatricula'])));
 
               		$inscrito=false;
-              			
+
+              		$result = mysql_query($sqlCursosInsc);
               		while ($linha = mysql_fetch_array($result)){
               			if($row['idCurso']==$linha[1]){
               				$inscrito=true;
