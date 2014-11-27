@@ -62,7 +62,8 @@ header('Content-Type: text/html; charset=utf-8');
             <li class="dropdown">
               <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Relatórios<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="relatorioSelecSemMat.php">Alunos selec sem Matrícula</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="relatorioSelecSemMat.php">Alunos Selecionados sem Matrícula</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="relatorioQtdInscritos.php">Quantidade de Alunos Inscritos por Curso</a></li>
               </ul>
             </li>
           </ul>
