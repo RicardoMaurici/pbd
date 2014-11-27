@@ -1,7 +1,17 @@
 <?php
+include ('../../conecta.php');
 require '../includes/header.html';
 require '../includes/menuAluno.php';
-//Pagina principal após o login
+
+$idAluno = $_SESSION['idAluno'];
+
+$sql = "SELECT `idCurso` FROM `Inscricao` i JOIN Matricula m ON i.idMatricula = m.idMatricula AND m.`matRecebido` = 1 WHERE i.`idPessoa` = $idAluno";
+$busca = mysql_query($sql) or die(mysql_error());
+$idCurso = mysql_fetch_row($busca);
+
+$query = "SELECT * FROM grade_aulas_aluno where idCurso = $idCurso[0]";
+$search = mysql_query($query) or die(mysql_error());
+
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
@@ -14,50 +24,30 @@ require '../includes/menuAluno.php';
 	        <div class="table-responsive">  
 	          <table id="mytable" class="table table-bordred table-striped">    
 	            <thead>
-	              <th>Horário</th>
-	              <th>Segunda-Feira</th>
-	              <th>Terça-Feira</th>
-	              <th>Quarta-Feira</th>
-	              <th>Quinta-Feira</th>
-	              <th>Sexta</th>
-	            </thead>
+	              <th>Turma</th>
+	              <th>Professor</th>
+	              <th>Disciplina</th>
+	              <th>Ínicio</th>
+	              <th>Término</th>
+	              <th>Sala</th>
+	              <th>Dia</th>
+	             </thead>
 	           <tbody>
     
-	            	<tr> <!--Alimenta Banco de Dados/Se já recebeu desmarca botão-->
-		                <th>08:00</th>
-		                <td>Português</td>
-		                <td>Estrangeira</td>
-		                <td>Matemática</td>
-		                <td>Geografia</td>
-		                <td>História</td>
+	            	<tr> 
+<?php
+				while ($row = mysql_fetch_array($search)){
+		        	echo '<th>'.$row['idTurma'].'</th>';
+		            echo '<th>'.$row['nomeCompleto'].'</th>';
+		            echo '<th>'.$row['nome'].'</th>';
+		            echo '<th>'.$row['hrInicio'].'</th>';
+		            echo '<th>'.$row['hrFim'].'</th>';
+		            echo '<th>'.$row['idSala'].'</th>';
+		            echo '<th>'.$row['nomeDia'].'</th>';
+		        }        
+?>
 		            </tr>
 
-		            <tr> <!--Alimenta Banco de Dados/Se já recebeu desmarca botão-->
-		                <th>10:00</th>
-		                <td>Português</td>
-		                <td>Estrangeira</td>
-		                <td>Matemática</td>
-		                <td>Geografia</td>
-		                <td>História</td>
-		            </tr>
-	              
-	           		<tr>
-	           			<th>10:20</th>
-		                <td>FisicaA</td>
-		                <td>QuimicaA</td>
-		                <td>Literatura</td>
-		                <td>FisicaB</td>
-		                <td>QuimicaB</td>
-		            </tr>
-
-		            <tr>
-	           			<th>12:20</th>
-		                <td>FisicaA</td>
-		                <td>QuimicaA</td>
-		                <td>Literatura</td>
-		                <td>FisicaB</td>
-		                <td>QuimicaB</td>
-		            </tr>
            		</tbody>       
        		  </table>     
     		</div>

@@ -40,9 +40,10 @@ header('Content-Type: text/html; charset=utf-8');
           <ul class="nav navbar-nav navbar-right">
             <?php 
               $cpf=$_SESSION['login'];
-              $sql="SELECT nomeCompleto FROM candidato WHERE cpf=$cpf";
+              $sql="SELECT nomeCompleto,idPessoa FROM candidato WHERE cpf=$cpf";
               $temp=mysql_query($sql) or die(mysql_error());
               $nome=mysql_fetch_array($temp);
+              $_SESSION['idAluno'] = $nome['idPessoa'];
             ?>
             <li><?php echo '<a href="../index.php">Sair  ['.$nome[0].'] </a>'?></li>
           </ul>
