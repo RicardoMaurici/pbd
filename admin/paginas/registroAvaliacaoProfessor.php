@@ -1,4 +1,5 @@
 <?php
+include ('../../conecta.php');
 require '../includes/header.html';
 require '../includes/menuAdmin.php';
 //Pagina principal após o login
@@ -12,6 +13,10 @@ require '../includes/menuAdmin.php';
   	<a href="cadastroAvaliacaoProfessor.php" class="btn btn-primary">Cadastrar</a>
   		<div class="row">    
    			<div class="col-md-12">
+   				<?php
+   					$sql="SELECT * FROM avaliacaoprofessor";
+   					$busca=mysql_query($sql) or die (mysql_error());
+   				?>
 		        <div class="table-responsive">  
 		          <table id="mytable" class="table table-bordred table-striped">    
 		            <thead>
@@ -28,34 +33,21 @@ require '../includes/menuAdmin.php';
 		              <th>Deletar</th>
 		            </thead>
 		            <tbody>
-    
+    				<?php while ($row = mysql_fetch_array($busca)){ ?>
 		            	<tr> <!--Alimenta Banco de Dados-->
-			                <td>1</td>
-			                <td>Manoel</td>
-			                <td>5</td>
-			                <td>6</td>
-			                <td>7</td>
-			              	<td>8</td>
-                			<td>9</td>
-                			<td>10</td>
-                			<td>07/11/2014</td>
-                			<td><p><a href="alterarAvaliacaoProfessor.php" class="btn btn-warning btn-xs">Alterar</a></p></td>
-			                <td><p><a href="deletarAvaliacaoProfessor.php" class="btn btn-danger btn-xs">Deletar</a></p></td>
+			                <td><?php echo $row['idAvaliacao']; ?></td>
+			                <td><?php echo $row['idPessoa']; ?></td>
+			                <td><?php echo $row['expectativa']; ?></td>
+			                <td><?php echo $row['planejamento']; ?></td>
+			                <td><?php echo $row['atendimento']; ?></td>
+			              	<td><?php echo $row['transmissao']; ?></td>
+                			<td><?php echo $row['pontualidade']; ?></td>
+                			<td><?php echo $row['apresentacao']; ?></td>
+                			<td><?php echo $row['dtAvaliacao']; ?></td>
+                			<td><p><a href="alterarAvaliacaoProfessor.php" disabled class="btn btn-warning btn-xs">Alterar</a></p></td>
+			                <td><p><a href="deletarAvaliacaoProfessor.php" disabled class="btn btn-danger btn-xs">Deletar</a></p></td>
 			            </tr>
-	              
-	             		<tr>
-			                <td>2</td>
-			                <td>Zacarias</td>
-			                <td>5</td>
-			                <td>6</td>
-			                <td>7</td>
-			              	<td>8</td>
-                			<td>9</td>
-                			<td>10</td>
-                			<td>08/11/2014</td>
-                			<td><p><a href="alterarAvaliacaoProfessor.php" class="btn btn-warning btn-xs">Alterar</a></p></td>
-			                <td><p><a href="deletarAvaliacaoProfessor.php" class="btn btn-danger btn-xs">Deletar</a></p></td>
-			            </tr>
+			        <?php } ?>
             		</tbody>       
           		  </table>     
        			</div>
