@@ -1,5 +1,5 @@
 <?php
-include('../conecta.php');
+include('../conecta_aluno.php');
 require '../includes/header.html';
 //Pagina principal após o login
 ?>

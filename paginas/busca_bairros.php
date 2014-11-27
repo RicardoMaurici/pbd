@@ -1,5 +1,5 @@
 <?php
-include('../conecta.php');
+include('../conecta_aluno.php');
 
    	$idcidade = $_GET['cidade'];
 	$result = mysql_query("SELECT*FROM Bairro where idCidade=$idcidade");

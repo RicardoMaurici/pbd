@@ -1,5 +1,5 @@
 <?php
-include('conecta.php');
+include('conecta_aluno.php');
 //Verifica o login e redireciona a pagina 
 if(isset($_POST['login'])){
 	$login = addslashes(trim($_POST['login']));

@@ -1,6 +1,7 @@
 <?php
 require '../includes/header.html';
 require '../includes/menuAluno.php';
+include ('../conecta_aluno.php');
 //Pagina principal após o login
 ?>
 

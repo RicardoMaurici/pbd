@@ -1,5 +1,5 @@
 <?php
-include('../conecta.php');
+include('../conecta_aluno.php');
 
    	$iduf = $_GET['uf'];
 	$result = mysql_query("SELECT*FROM Cidade where idUF=$iduf");

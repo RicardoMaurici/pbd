@@ -1,5 +1,5 @@
 <?php
-include('../../conecta.php');
+include('../../conecta_aluno.php');
 
 //pega dados form e coloca no banco
 if(getenv("REQUEST_METHOD")!="POST"){

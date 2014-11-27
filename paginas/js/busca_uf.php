@@ -1,5 +1,5 @@
 <?php
-include('../../conecta.php');
+include('../../conecta_aluno.php');
    	$idpais = $_GET['pais'];
 	$result = mysql_query("SELECT*FROM UF where idPais=$idpais");
 

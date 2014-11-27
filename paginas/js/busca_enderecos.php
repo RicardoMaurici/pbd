@@ -1,5 +1,5 @@
 <?php
-include('../../conecta.php');
+include('../../conecta_aluno.php');
 
    	$idlogradouro= $_GET['logradouro'];
 	$result = mysql_query("SELECT*FROM Endereco where idLogradouro=$idlogradouro");
