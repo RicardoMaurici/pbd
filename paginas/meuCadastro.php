@@ -2,7 +2,18 @@
 include ('../conecta_aluno.php');
 require '../includes/header.html';
 require '../includes/menuAluno.php';
-//Pagina principal após o login
+
+if(isset($_GET['c'])){
+  $c = $_GET['c'];
+  $q = "DELETE FROM Candidato WHERE idPessoa = $c";
+  $r = mysql_query($q);
+  if(!$results){
+    echo '<script>alert("'.mysql_error().'")</script>';
+  }else{
+    echo '<script>alert("Exclusão realizada com sucesso!")</script>';
+  } 
+
+}
 ?>
 
 <div class="panel panel-default col-md-10 col-md-offset-1">
@@ -156,6 +167,7 @@ require '../includes/menuAluno.php';
         <div class="col-sm-2">
         </div>
       <a href="alteraCadastroAluno.php" class="btn btn-warning" style="width: 25%;" id="retornaCunsultaGeral">Quero alterar</a>
+      <a href="meuCadastro.php?c=<?php echo $pessoa[0]; ?>" class="btn btn-danger" style="width: 25%;" id="retornaCunsultaGeral">Quero deletar</a>
     </div>
 	</form>
   </div>
