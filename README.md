@@ -1,10 +1,19 @@
 Pequena aplicação para executar operações em um banco de dados
-criado na disciplina de Projeto de BD, que envolveu modelo conceitual, lógico e físico.
+
+A aplicação permite a gestão de cursinhos, com cadastro de professores, alunos, funcionários, inscrições e matricula nos cursos, entre outras atividades do cursinho.
+
+Requisitos: 
+
+	- MySQL
+	- PHP
+
+Arquivos de configuração:
+
+	 - conecta.php
+	 	- acesso ao banco para o usuário ADMIN
+	 - conecta_aluno.php
+	 	- acesso ao banco para o usuário CANDIDATO
 
 
-- Não faz verificação de senha.
-no /admin
-User admin, funcionario ou professor
 
-Para cada tipo de usuario aparece as respectivas funcionalidades, mas só para o admin os menus funcionam.
 
