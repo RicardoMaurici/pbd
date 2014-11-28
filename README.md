@@ -8,6 +8,7 @@ Requisitos:
 	- PHP
 
 Arquivos de configuração:
+
 	 - conecta.php
 	 	- acesso ao banco para o usuário ADMIN
 	 - conecta_aluno.php
