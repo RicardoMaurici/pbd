@@ -51,7 +51,7 @@ require '../includes/menuAluno.php';
 		                <?php if($row['selecionado']==1){ ?>
 		              		<td><input type="checkbox" class="checkthis" disabled="disabled" checked="checked"/></td>
 		              	<?php }else{ ?>
-		              		td><input type="checkbox" class="checkthis" disabled="disabled"/></td>
+		              		<td><input type="checkbox" class="checkthis" disabled="disabled"/></td>
 		              	<?php } ?>
 		              	<?php if($row['idMatricula']<>NULL){ ?>
 		              		<td><input type="checkbox" class="checkthis" disabled="disabled" checked="checked"/></td>

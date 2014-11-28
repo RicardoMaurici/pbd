@@ -59,8 +59,8 @@ include('../../conecta.php');
 	              <th>Material</th><!--Todos materias e documentos entregues-->
 	              <th>Documento</th>
 	              <th>Visualizar</th>
-	              <th>Alterar</th>
-	              <th>Excluir</th>
+	              <!--<th>Alterar</th>
+	              <th>Excluir</th>-->
 	            </thead>
 	           <tbody>
     				<?php while ($row = mysql_fetch_array($busca))
@@ -82,8 +82,8 @@ include('../../conecta.php');
 		                <td><input type="checkbox" class="checkthis" disabled="disabled" checked="checked"/></td>
 		                <?php } ?>
 		                <td><p><?php echo '<a href="detalheCadastroAluno.php?id='.$row['Pessoa'].'" class="btn btn-primary btn-xs"">Cadastro Aluno</a>';?></p></td>
-		              	<td><p><a href="alterarCadastroAluno.php" class="btn btn-warning btn-xs">Alterar</a>
-		              	<td><p><a href="deletarCadastroAluno.php" class="btn btn-danger btn-xs">Excluir</a>
+		              	<!--<td><p><a href="alterarCadastroAluno.php" class="btn btn-warning btn-xs">Alterar</a>
+		              	<td><p><?php echo '<a href="deletarCadastroAluno.php?id='.$row['Pessoa'].'" class="btn btn-danger btn-xs"">Excluir</a>';?></p></td>-->
 		            </tr>
 	              <?php } ?>
            		</tbody>       

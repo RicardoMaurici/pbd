@@ -150,7 +150,7 @@ require '../includes/menuAdmin.php';
       <div class="form-group">
         <div class="col-sm-2">
         </div>
-      <a href="alteraCadastroAluno.php" class="btn btn-warning" style="width: 25%;" id="retornaCunsultaGeral">Quero alterar</a>
+      <a href="consultaGeral.php" class="btn btn-primary" style="width: 25%;" id="retornaCunsultaGeral">Voltar</a>
     </div>
   </form>
   </div>
